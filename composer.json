@@ -1,7 +1,20 @@
 {
     "name": "root/grability",
-    "license": "proprietary",
-    "type": "project",
+    "description": "Grability technical test",
+    "keywords": ["grability", "test", "hackerrank"],
+    "homepage": "https://github.com/gnemes/grability.git",
+    "license": "GPL-3",
+    "type": "Technical test",
+    "authors": [
+        {
+            "name": "German Nemes",
+            "homepage": "http://gnemes.com.ar",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "gnemes@gmail.com"
+    },
     "autoload": {
         "psr-4": {
             "": "src/"
@@ -26,7 +39,8 @@
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "twbs/bootstrap": "3.3.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
