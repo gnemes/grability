@@ -29,7 +29,7 @@ body {
 }
 
 .breadcrumb li.active a:after {
-	border-left: 30px solid #ffc107 ;
+	border-left: 30px solid red;
 }
 
 .breadcrumb li.completed a:after {
