@@ -75,7 +75,11 @@
     
     function changeMatrixLabel(newSize)
     {
-        $("#matrix-size-label").html("Operations for matrix ("+newSize+", "+newSize+", "+newSize+"): ");
+        if (typeof newSize === 'undefined') {
+            $("#matrix-container").html("Done!");
+        } else {
+            $("#matrix-size-label").html("Operations for matrix ("+newSize+", "+newSize+", "+newSize+"): ");
+        }
     }
     
     $(function() {
