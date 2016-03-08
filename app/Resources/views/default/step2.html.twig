@@ -7,32 +7,31 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Step 2 - Select matrix size</h3>
             </div>
-
-            <form action="{{ path('step3') }}" method="post">
-                <div class="panel-body">
-                    <div class="control-group">
-                        <div class="controls">
-                            <label for="matrixsize">Matrix size (N, N, N): </label>
-                            <select id="matrixsize" name="matrixsize">
-                            {% for i in 1..100 %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                            </select>
-                        </div>
+            <div class="panel-body">
+                <div class="control-group">
+                    <div class="controls">
+                        <label for="matrixsize">Matrix size (N, N, N): </label>
+                        <select id="matrixsize" name="matrixsize">
+                        {% for i in 1..100 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                        </select>
                     </div>
                 </div>
+            </div>
 
-                <div class="panel-footer">
-                    <div class="form-actions">
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                Add Matrix 
-                                (<span id="tests-cases-left">{{testCases}}</span> left)
-                            </button>
-                        </div>
-                    </div>                        
-                </div>
-            </form>
+            <div class="panel-footer">
+                <div class="form-actions">
+                    <div>
+                        <button type="button" 
+                                id="matrix-add" 
+                                class="btn btn-primary btn-lg btn-block">
+                            Add Matrix 
+                            (<span id="tests-cases-left">{{testCases}}</span> left)
+                        </button>
+                    </div>
+                </div>                        
+            </div>
         </div>
     </div>
                             
@@ -62,4 +61,14 @@
         </div>
     </div>                        
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript">
+    $( "#matrix-add" ).on( "click", function( event ) {
+        alert($("#tests-cases-left").html());
+    });
+    </script>
 {% endblock %}
