@@ -21,20 +21,22 @@
     <body>
         <div class="container">
             <div class="row">
-                <ul class="breadcrumb">
-                    <li class="{{ breadcum.step1 }}">
-                        <a href="#">Test cases</a>
-                    </li>
-                    <li class="{{ breadcum.step2 }}">
-                        <a href="#">Matrix Size</a>
-                    </li>
-                    <li class="{{ breadcum.step3 }}">
-                        <a href="#">Operations</a>
-                    </li>
-                    <li class="{{ breadcum.step4 }}">
-                        <a href="#">Output</a>
-                    </li>
-                </ul>
+                <div class="col-sm-12">
+                    <ul class="breadcrumb">
+                        <li class="{{ breadcum.step1 }}">
+                            <a href="#">Test cases</a>
+                        </li>
+                        <li class="{{ breadcum.step2 }}">
+                            <a href="#">Matrix Size</a>
+                        </li>
+                        <li class="{{ breadcum.step3 }}">
+                            <a href="#">Operations</a>
+                        </li>
+                        <li class="{{ breadcum.step4 }}">
+                            <a href="#">Output</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             
             {% block content %}{% endblock %}
