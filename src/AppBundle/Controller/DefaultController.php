@@ -69,6 +69,13 @@ class DefaultController extends Controller
      */
     public function step3Action(Request $request)
     {
+        $session = $request->getSession();
+        
+        // Get test cases quantity from request
+        $matrixSizes = $request->request->get('matrixSizes');
+        
+        echo "Matrix sizes: ".var_export($matrixSizes, true);
+        
         return $this->render(
             'default/step1.html.twig',
             [

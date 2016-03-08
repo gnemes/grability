@@ -57,7 +57,7 @@
     </div>                        
 </div>
                             
-<form action="{{ path('step3') }}" method="post">
+<form action="{{ path('step3') }}" method="post" id="form-step2">
 </form>
 {% endblock %}
 
@@ -99,8 +99,10 @@
     function submitMatrix()
     {
         $( "#matrix-list li" ).each(function( index ) {
-            alert( $( this ).attr("size") );
+            $("#form-step2").append("<input type='hidden' name='matrixSizes[]' value='"+$( this ).attr("size")+"'/>");
         });
+        
+        $("#form-step2").submit();
     }
     </script>
 {% endblock %}
