@@ -19,7 +19,30 @@
     </head>
 
     <body>
-        {% block body %}{% endblock %}
+        <div class="container">
+            <div class="row">
+                <ul class="breadcrumb">
+                    <li class="active">
+                        <a href="#">Test cases</a>
+                    </li>
+                    <li>
+                        <a href="#">Matrix Size</a>
+                    </li>
+                    <li>
+                        <a href="#">Matrix Operations</a>
+                    </li>
+                    <li>
+                        <a href="#">Input</a>
+                    </li>
+                    <li>
+                        <a href="#">Run!</a>
+                    </li>
+                </ul>
+            </div>
+            
+            {% block content %}{% endblock %}
+        </div>
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>

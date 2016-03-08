@@ -1,57 +1,35 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %}
-<div class="container">
-	<div class="row">
-		<ul class="breadcrumb">
-			<li class="active">
-                <a href="#">Test cases</a>
-            </li>
-			<li>
-                <a href="#">Matrix Size</a>
-            </li>
-			<li>
-                <a href="#">Matrix Operations</a>
-            </li>
-			<li>
-                <a href="#">Input</a>
-            </li>
-            <li>
-                <a href="#">Run!</a>
-            </li>
-		</ul>
-	</div>
-    
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Step 1 - Select tests cases quantity</h3>
-                </div>
-                
-                <form action="{{ path('step2') }}" method="post">
-                    <div class="panel-body">
-                        <div class="control-group">
-                            <div class="controls">
-                                <label for="testsqty">Tests cases quantity: </label>
-                                <select id="testsqty" name="testsqty">
-                                {% for i in 1..50 %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                                </select>
-                            </div>
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Step 1 - Select tests cases quantity</h3>
+            </div>
+
+            <form action="{{ path('step2') }}" method="post">
+                <div class="panel-body">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="testsqty">Tests cases quantity: </label>
+                            <select id="testsqty" name="testsqty">
+                            {% for i in 1..50 %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                            </select>
                         </div>
                     </div>
-                         
-                    <div class="panel-footer">
-                        <div class="form-actions">
-                            <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Next step</button>
-                            </div>
-                        </div>                        
-                    </div>
-                </form>
-            </div>
+                </div>
+
+                <div class="panel-footer">
+                    <div class="form-actions">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Next step</button>
+                        </div>
+                    </div>                        
+                </div>
+            </form>
         </div>
     </div>
 </div>
