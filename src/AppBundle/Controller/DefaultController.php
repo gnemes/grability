@@ -74,13 +74,23 @@ class DefaultController extends Controller
         // Get test cases quantity from request
         $matrixSizes = $request->request->get('matrixSizes');
         
-        echo "Matrix sizes: ".var_export($matrixSizes, true);
+        // Set test cases quantity into session
+        $session->set("matrixSizes", $matrixSizes);
+        
+        $breadcum = array(
+            "step1" => "completed",
+            "step2" => "completed",
+            "step3" => "active",
+            "step4" => "",
+            "step5" => "",
+        );
         
         return $this->render(
             'default/step1.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,
+                'matrixSizes' => $matrixSizes,
             ]
         );
     }
