@@ -43,7 +43,7 @@
 
             <div class="panel-body">
                 
-                <ul class="list-group">
+                <ul class="list-group" id="matrix-list">
                     <li class="list-group-item">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
                     <li class="list-group-item">Morbi leo risus</li>
@@ -55,7 +55,7 @@
             
             <div class="panel-footer">
                 <div>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Next step</button>
+                    <button type="button" id="next-step" class="btn btn-primary btn-lg btn-block">Next step</button>
                 </div>
             </div>
         </div>
@@ -67,9 +67,13 @@
     {{ parent() }}
     
     <script type="text/javascript">
+    $("#next-step").hide();    
+        
     $( "#matrix-add" ).on( "click", function( event ) {
         // Get Matrix size value
         var matrixSize = $("#matrix-size").val();
+        
+        addMatrix(matrixSize);
         
         // Get test cases left
         var testCasesLeft = $("#test-cases-left").html();
@@ -79,9 +83,15 @@
         // Change test cases remaining or hide add button
         if (testCasesRemain == 0) {
             $('#matrix-add').hide();
+            $("#next-step").show();
         } else {
             $("#test-cases-left").html(testCasesRemain);
         }
     });
+    
+    function addMatrix(size)
+    {
+        $("#matrix-list").append("<li>Matrix (1,1,1)...("+size+","+size+","+size+")</li>");
+    }
     </script>
 {% endblock %}
