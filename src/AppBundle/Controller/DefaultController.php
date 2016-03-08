@@ -86,7 +86,7 @@ class DefaultController extends Controller
         );
         
         return $this->render(
-            'default/step1.html.twig',
+            'default/step3.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,

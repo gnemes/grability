@@ -1,0 +1,108 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Step 3 - Operations quantity per matrix</h3>
+            </div>
+            <div class="panel-body">
+                <div class="control-group">
+                    <div class="controls">
+                        <label for="matrixsize">Operations for matrix (N, N, N): </label>
+                        <select id="matrix-size" name="matrix-size">
+                        {% for i in 1..1000 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="form-actions">
+                    <div>
+                        <button type="button" 
+                                id="matrix-add" 
+                                class="btn btn-primary btn-lg btn-block">
+                            Add Operations for Matrix 
+                            (<span id="test-cases-left">{{testCases}}</span> matrix left)
+                        </button>
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>
+                            
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Matrix</h3>
+            </div>
+
+            <div class="panel-body">
+                
+                <ul class="list-group" id="matrix-list">
+                </ul>
+                
+            </div>
+            
+            <div class="panel-footer">
+                <div>
+                    <button type="button" id="next-step" class="btn btn-primary btn-lg btn-block">Next step</button>
+                </div>
+            </div>
+        </div>
+    </div>                        
+</div>
+                            
+<form action="{{ path('step3') }}" method="post" id="form-step2">
+</form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript">
+    $("#next-step").hide();    
+        
+    $( "#matrix-add" ).on( "click", function( event ) {
+        // Get Matrix size value
+        var matrixSize = $("#matrix-size").val();
+        
+        addMatrix(matrixSize);
+        
+        // Get test cases left
+        var testCasesLeft = $("#test-cases-left").html();
+        
+        var testCasesRemain = testCasesLeft - 1;
+        
+        // Change test cases remaining or hide add button
+        if (testCasesRemain == 0) {
+            $('#matrix-add').hide();
+            $("#next-step").show();
+        } else {
+            $("#test-cases-left").html(testCasesRemain);
+        }
+    });
+    
+    $( "#next-step" ).on( "click", function( event ) {
+        submitMatrix();
+    });
+    
+    function addMatrix(size)
+    {
+        $("#matrix-list").append("<li class='list-group-item' size='"+size+"'>Matrix (1,1,1)...("+size+","+size+","+size+")</li>");
+    }
+    
+    function submitMatrix()
+    {
+        $( "#matrix-list li" ).each(function( index ) {
+            $("#form-step2").append("<input type='hidden' name='matrixSizes[]' value='"+$( this ).attr("size")+"'/>");
+        });
+        
+        $("#form-step2").submit();
+    }
+    </script>
+{% endblock %}
