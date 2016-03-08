@@ -36,7 +36,7 @@ class DefaultController extends Controller
      */
     public function step2Action(Request $request)
     {
-        // echo $request->request->get('testsqty');
+        $testCases = $request->request->get('testsqty');
         
         $breadcum = array(
             "step1" => "completed",
@@ -52,6 +52,7 @@ class DefaultController extends Controller
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,
+                'testCases' => $testCases,
             ]
         );
     }
