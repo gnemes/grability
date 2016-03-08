@@ -5,6 +5,9 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+
+
 
 class DefaultController extends Controller
 {
@@ -21,7 +24,6 @@ class DefaultController extends Controller
             "step5" => "",
         );
         
-        // replace this example code with whatever you need
         return $this->render(
             'default/step1.html.twig',
             [
@@ -36,7 +38,13 @@ class DefaultController extends Controller
      */
     public function step2Action(Request $request)
     {
+        $session = $request->getSession();
+        
+        // Get test cases quantity from request
         $testCases = $request->request->get('testsqty');
+        
+        // Set test cases quantity into session
+        $session->set("testCases", $testCases);
         
         $breadcum = array(
             "step1" => "completed",
@@ -46,7 +54,6 @@ class DefaultController extends Controller
             "step5" => "",
         );
         
-        // replace this example code with whatever you need
         return $this->render(
             'default/step2.html.twig',
             [
@@ -62,7 +69,6 @@ class DefaultController extends Controller
      */
     public function step3Action(Request $request)
     {
-        // replace this example code with whatever you need
         return $this->render(
             'default/step1.html.twig',
             [
