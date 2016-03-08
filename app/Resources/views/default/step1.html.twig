@@ -28,12 +28,12 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Step 1 - Select tests cases quantity</h3>
                 </div>
-                <div class="panel-body">
-                    
-                    <form action="" method="post">
+                
+                <form action="" method="post">
+                    <div class="panel-body">
                         <div class="control-group">
-                            <h3>Tests cases quantity</h3>
                             <div class="controls">
+                                <label for="testsqty">Tests cases quantity</label>
                                 <select id="testsqty" name="testsqty">
                                 {% for i in 1..50 %}
                                     <option value="{{ i }}">{{ i }}</option>
@@ -41,9 +41,16 @@
                                 </select>
                             </div>
                         </div>
-                    </form>
-                            
-                </div>
+                    </div>
+                         
+                    <div class="panel-footer">
+                        <div class="form-actions">
+                            <div>
+                                <button type="submit" class="btn btn-default btn-lg btn-block">Next step</button>
+                            </div>
+                        </div>                        
+                    </div>
+                </form>
             </div>
         </div>
     </div>
