@@ -65,8 +65,8 @@
     {{ parent() }}
     
     <script type="text/javascript">
-    //var matrixSizes = jQuery.parseJSON();
-    //var currentSize = matrixSizes[0];
+    var matrixSizes = jQuery.parseJSON('{{matrixSizes | raw}}');
+    var currentSize = matrixSizes[0];
     
     function changeMatrixLabel(newSize)
     {
@@ -74,9 +74,7 @@
     }
     
     $(function() {
-        //changeMatrixLabel(currentSize);
-        
-        console.log("{{matrixSizes | raw}}");
+        changeMatrixLabel(currentSize);
     });
     
     $("#next-step").hide();    
