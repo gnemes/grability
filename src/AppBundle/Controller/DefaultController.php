@@ -36,7 +36,7 @@ class DefaultController extends Controller
      */
     public function step2Action(Request $request)
     {
-        echo $request->request->get('testsqty');
+        // echo $request->request->get('testsqty');
         
         $breadcum = array(
             "step1" => "completed",
