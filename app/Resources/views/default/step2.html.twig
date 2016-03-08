@@ -27,7 +27,7 @@
                                 id="matrix-add" 
                                 class="btn btn-primary btn-lg btn-block">
                             Add Matrix 
-                            (<span id="tests-cases-left">{{testCases}}</span> left)
+                            (<span id="test-cases-left">{{testCases}}</span> left)
                         </button>
                     </div>
                 </div>                        
@@ -69,9 +69,19 @@
     <script type="text/javascript">
     $( "#matrix-add" ).on( "click", function( event ) {
         // Get Matrix size value
-        alert($("#matrix-size").val());
+        var matrixSize = $("#matrix-size").val();
         
-        alert($("#tests-cases-left").html());
+        // Get test cases left
+        var testCasesLeft = $("#test-cases-left").html();
+        
+        var testCasesRemain = testCasesLeft - 1;
+        
+        // Change test cases remaining or hide add button
+        if (testCasesRemain == 0) {
+            $('#matrix-add').hide();
+        } else {
+            $("#test-cases-left").html(testCasesRemain);
+        }
     });
     </script>
 {% endblock %}
