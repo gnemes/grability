@@ -18,7 +18,6 @@ class DefaultController extends Controller
             "step2" => "",
             "step3" => "",
             "step4" => "",
-            "step5" => "",
         );
         
         // replace this example code with whatever you need
@@ -43,7 +42,6 @@ class DefaultController extends Controller
             "step2" => "active",
             "step3" => "",
             "step4" => "",
-            "step5" => "",
         );
         
         // replace this example code with whatever you need
