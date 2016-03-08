@@ -13,11 +13,20 @@ class DefaultController extends Controller
      */
     public function step1Action(Request $request)
     {
+        $breadcum = array(
+            "step1" => "active",
+            "step2" => "",
+            "step3" => "",
+            "step4" => "",
+            "step5" => "",
+        );
+        
         // replace this example code with whatever you need
         return $this->render(
             'default/step1.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+                'breadcum' => $breadcum,
             ]
         );
     }
@@ -27,11 +36,20 @@ class DefaultController extends Controller
      */
     public function step2Action(Request $request)
     {
+        $breadcum = array(
+            "step1" => "complete",
+            "step2" => "active",
+            "step3" => "",
+            "step4" => "",
+            "step5" => "",
+        );
+        
         // replace this example code with whatever you need
         return $this->render(
             'default/step2.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+                'breadcum' => $breadcum,
             ]
         );
     }
@@ -46,6 +64,7 @@ class DefaultController extends Controller
             'default/step1.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+                'breadcum' => $breadcum,
             ]
         );
     }
