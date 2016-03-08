@@ -37,7 +37,7 @@ class DefaultController extends Controller
     public function step2Action(Request $request)
     {
         $breadcum = array(
-            "step1" => "complete",
+            "step1" => "completed",
             "step2" => "active",
             "step3" => "",
             "step4" => "",
