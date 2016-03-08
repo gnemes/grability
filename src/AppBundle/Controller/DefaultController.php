@@ -77,6 +77,9 @@ class DefaultController extends Controller
         // Set test cases quantity into session
         $session->set("matrixSizes", $matrixSizes);
         
+        // Get test cases quantity into session
+        $testCases = $session->get("testCases");
+        
         $breadcum = array(
             "step1" => "completed",
             "step2" => "completed",
@@ -90,6 +93,7 @@ class DefaultController extends Controller
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,
+                'testCases' => $testCases,
                 'matrixSizes' => $matrixSizes,
             ]
         );
