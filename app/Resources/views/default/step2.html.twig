@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Step 2 - Select matrix size</h3>
+            </div>
+
+            <form action="{{ path('step3') }}" method="post">
+                <div class="panel-body">
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="matrixsize">Matrix size (N, N, N): </label>
+                            <select id="matrixsize" name="matrixsize">
+                            {% for i in 1..100 %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-footer">
+                    <div class="form-actions">
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Next step</button>
+                        </div>
+                    </div>                        
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

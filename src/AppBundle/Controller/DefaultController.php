@@ -29,6 +29,20 @@ class DefaultController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render(
+            'default/step2.html.twig',
+            [
+                'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+            ]
+        );
+    }
+    
+    /**
+     * @Route("/step3", name="step3")
+     */
+    public function step3Action(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render(
             'default/step1.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
