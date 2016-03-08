@@ -11,7 +11,7 @@
                 <div class="control-group">
                     <div class="controls">
                         <label for="matrixsize">Matrix size (N, N, N): </label>
-                        <select id="matrixsize" name="matrixsize">
+                        <select id="matrix-size" name="matrix-size">
                         {% for i in 1..100 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
@@ -68,6 +68,9 @@
     
     <script type="text/javascript">
     $( "#matrix-add" ).on( "click", function( event ) {
+        // Get Matrix size value
+        alert($("#matrix-size").val());
+        
         alert($("#tests-cases-left").html());
     });
     </script>
