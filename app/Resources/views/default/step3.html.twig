@@ -57,7 +57,7 @@
     </div>                        
 </div>
                             
-<form action="{{ path('step3') }}" method="post" id="form-step2">
+<form action="{{ path('step4') }}" method="post" id="form-step3">
 </form>
 {% endblock %}
 
@@ -127,11 +127,19 @@
     
     function submitMatrix()
     {
+        var matrixOperations = new Array();
+        
         $( "#matrix-list li" ).each(function( index ) {
-            $("#form-step2").append("<input type='hidden' name='matrixSizes[]' value='"+$( this ).attr("size")+"'/>");
+            var op = new Array();
+            op['size'] = $( this ).attr("size");
+            op['operations'] = $( this ).attr("operations");
+            
+            matrixOperations.push(op);
         });
         
-        $("#form-step2").submit();
+        $("#form-step3").append("<input type='hidden' name='matrixSizesOperations' value='"+JSON.stringify(matrixOperations);+"'/>");
+        
+        $("#form-step3").submit();
     }
     </script>
 {% endblock %}

@@ -98,4 +98,41 @@ class DefaultController extends Controller
             ]
         );
     }
+    
+   /**
+     * @Route("/step4", name="step4")
+     */
+    public function step4Action(Request $request)
+    {
+        $session = $request->getSession();
+        
+        // Get test cases quantity from request
+        $matrixSizesOperations = $request->request->get('matrixSizesOperations');
+        
+        // Set test cases quantity into session
+        $session->set("matrixSizesOperations", $matrixSizesOperations);
+        
+echo "Result:: ".var_export($matrixSizesOperations, true);        
+        
+        // Get test cases quantity into session
+        $testCases = $session->get("testCases");
+        
+        $breadcum = array(
+            "step1" => "completed",
+            "step2" => "completed",
+            "step3" => "active",
+            "step4" => "",
+            "step5" => "",
+        );
+        
+        return $this->render(
+            'default/step3.html.twig',
+            [
+                'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+                'breadcum' => $breadcum,
+                'testCases' => $testCases,
+                'matrixSizes' => json_encode(array_reverse($matrixSizes)),
+            ]
+        );
+    }    
 }
