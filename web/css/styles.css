@@ -18,7 +18,7 @@ body {
 	float: left; 
 }
 
-.breadcrumb li.active {
+.breadcrumb li.active a {
 	background: brown;                   /* fallback color */
 	background: #2e6da4; 
 }
@@ -28,7 +28,7 @@ body {
 	background: hsla(153, 57%, 51%, 1); 
 }
 
-.breadcrumb li.active:after {
+.breadcrumb li.active a:after {
 	border-left: 30px solid #2e6da4;
 }
 
