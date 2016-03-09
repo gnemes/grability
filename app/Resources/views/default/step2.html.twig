@@ -65,7 +65,15 @@
     {{ parent() }}
     
     <script type="text/javascript">
-    $("#next-step").hide();    
+    $(function() {
+        $("#next-step").hide();
+        
+        var matrixContainer = new Container();
+        matrixContainer.addMatrix(new Matrix(2, 3));
+        matrixContainer.addMatrix(new Matrix(4, 5));
+        
+        alert(JSON.stringify(matrixContainer.matrix));
+    });    
         
     $( "#matrix-add" ).on( "click", function( event ) {
         // Get Matrix size value
