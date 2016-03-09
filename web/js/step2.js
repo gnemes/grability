@@ -53,3 +53,7 @@ function addMatrix(size)
     var li = "<li class='list-group-item' size='"+size+"'>Matrix (1,1,1)...("+size+","+size+","+size+")</li>";
     $("#matrix-list").append(li);
 }
+
+$("#next-step").on('click', function( event ) {
+    submitTestCase(tc);
+});

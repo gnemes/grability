@@ -71,6 +71,10 @@ class DefaultController extends Controller
     {
         $session = $request->getSession();
         
+        // Get test case object
+        $testCases = $request->request->get('testCase');
+echo $testCases; return false;        
+        
         // Get test cases quantity from request
         $matrixSizes = $request->request->get('matrixSizes');
         

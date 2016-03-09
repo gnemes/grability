@@ -70,25 +70,6 @@
             
             initStep2(tc);
         });
-        
-        
-        
-    
-    
-    $( "#next-step" ).on( "click", function( event ) {
-        submitMatrix();
-    });
-    
-    
-    
-    function submitMatrix()
-    {
-        $( "#matrix-list li" ).each(function( index ) {
-            $("#form-step2").append("<input type='hidden' name='matrixSizes[]' value=\""+$( this ).attr("size")+"\"/>");
-        });
-        
-        $("#form-step2").submit();
-    }
     </script>
     
     <script src="{{ asset('js/step2.js') }}"></script>
