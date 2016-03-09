@@ -26,8 +26,7 @@
                         <button type="button" 
                                 id="matrix-add" 
                                 class="btn btn-primary btn-lg btn-block">
-                            Add Operations for Matrix 
-                            (<span id="test-cases-left">{{testCases}}</span> matrix left)
+                            <!-- Label will be put here with JS --> 
                         </button>
                     </div>
                 </div>                        
@@ -74,7 +73,7 @@
         
         
         
-    var matrixSizes = jQuery.parseJSON('{{matrixSizes | raw}}');
+    //var matrixSizes = jQuery.parseJSON('{{matrixSizes | raw}}');
     var currentSize = popElementFromMatrixSizes();
     var matrixOperations = new Array();
     
