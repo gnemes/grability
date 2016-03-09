@@ -26,7 +26,7 @@
                     <div>
                         <button type="button" 
                                 class="btn btn-primary btn-lg btn-block"
-                                id="nex-step">
+                                id="next-step">
                             Next step
                         </button>
                     </div>
@@ -41,17 +41,5 @@
 {% endblock %}
 
 {% block javascripts %}
-<!--<script type="text/javascript" src="{{ asset('js/step1.js') }}"></script>-->
-<script type="text/javascript">
-$("#next-step").on('click', function( event ) {
-    /*
-    var testCases = new TestCases();
-    testCases.quantity = $("#testsqty").val();
-
-    var jsonTestCases = JSON.stringify(testCases);
-    */
-    var jsonTestCases = 'la puta madre';
-    alert(jsonTestCases);
-});
-    </script>
+<script type="text/javascript" src="{{ asset('js/step1.js') }}"></script>
 {% endblock %}
