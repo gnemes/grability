@@ -67,6 +67,7 @@
     <script type="text/javascript">
     var matrixSizes = jQuery.parseJSON('{{matrixSizes | raw}}');
     var currentSize = popElementFromMatrixSizes();
+    var matrixOperations = new Array();
     
     function popElementFromMatrixSizes()
     {
@@ -127,8 +128,6 @@
     
     function submitMatrix()
     {
-        var matrixOperations = new Array();
-        
         $( "#matrix-list li" ).each(function( index ) {
             var op = new Array();
             op['size'] = $( this ).attr("size");
@@ -136,8 +135,6 @@
             
             matrixOperations.push(op);
         });
-        
-        alert(matrixOperations);
         
         $("#form-step3").append("<input type='hidden' name='matrixSizesOperations' value='"+JSON.stringify(matrixOperations)+"'/>");
         
