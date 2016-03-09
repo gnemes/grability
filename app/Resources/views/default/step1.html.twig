@@ -41,5 +41,14 @@
 {% endblock %}
 
 {% block javascripts %}
-<script type="text/javascript" src="{{ asset('js/step1.js') }}"></script>
+<!--<script type="text/javascript" src="{{ asset('js/step1.js') }}"></script>-->
+    <script type="text/javascript">
+$("#next-step").on('click', function( event ) {
+    var testCases = new TestCases();
+    testCases.quantity = $("#testsqty").val();
+
+    var jsonTestCases = JSON.stringify(testCases);
+
+    alert(jsonTestCases);
+});</script>
 {% endblock %}
