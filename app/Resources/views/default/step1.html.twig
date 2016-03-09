@@ -41,5 +41,6 @@
 {% endblock %}
 
 {% block javascripts %}
-<script type="text/javascript" src="{{ asset('js/step1.js') }}"></script>
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/step1.js') }}"></script>
 {% endblock %}
