@@ -26,7 +26,9 @@
                     <div>
                         <button type="button" 
                                 class="btn btn-primary btn-lg btn-block"
-                                id="nex-step">Next step</button>
+                                id="nex-step">
+                            Next step
+                        </button>
                     </div>
                 </div>                        
             </div>
@@ -39,6 +41,6 @@
 {% endblock %}
 
 {% block javascripts %}
-{{ parent() }}    
-<script src="{{ asset('js/step1.js') }}"></script>
+    {{ parent() }}    
+    <script type="text/javascript" src="{{ asset('js/step1.js') }}"></script>
 {% endblock %}
