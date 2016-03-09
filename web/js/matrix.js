@@ -18,7 +18,7 @@ TestCases.prototype.init = function(jsonTestCases) {
     var tcTmp = jQuery.parseJSON(jsonTestCases);
     this.quantity = tcTmp.quantity;
     
-    tcTmp.matrices.each( function( elem ) {
+    $.each(tcTmp.matrices, function( elem ) {
         var tmpMatrix = new Matrix(elem.size, elem.operations);
         this.addMatrix(tmpMatrix);
     });
