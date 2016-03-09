@@ -1,8 +1,8 @@
 $("#next-step").on('click', function( event ) {
-    var testCases = new TestCases();
-    testCases.quantity = $("#testsqty").val();
+    var tc = new TestCases();
+    tc.quantity = $("#testsqty").val();
 
-    var jsonTestCases = JSON.stringify(testCases);
+    var jsonTestCases = JSON.stringify(tc);
 
     alert(jsonTestCases);
 });
