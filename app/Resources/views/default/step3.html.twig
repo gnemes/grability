@@ -73,14 +73,6 @@
         
         
         
-    //var matrixSizes = jQuery.parseJSON('{{matrixSizes | raw}}');
-    var currentSize = popElementFromMatrixSizes();
-    var matrixOperations = new Array();
-    
-    function popElementFromMatrixSizes()
-    {
-        return matrixSizes.pop();
-    }
     
     $( "#matrix-add" ).on( "click", function( event ) {
         // Get Matrix size operations value
@@ -104,34 +96,9 @@
         }
     });
     
-    $( "#next-step" ).on( "click", function( event ) {
-        submitMatrix();
-    });
-    
-    function updateMatrixCurrentSize()
-    {
-        currentSize = popElementFromMatrixSizes();
-        changeMatrixLabel(currentSize);
-    }
-    
     function addMatrix(operations)
     {
         $("#matrix-list").append("<li class='list-group-item' size='"+currentSize+"' operations='"+operations+"'>Matrix (1,1,1)...("+currentSize+","+currentSize+","+currentSize+") => "+operations+" operations</li>");
-    }
-    
-    function submitMatrix()
-    {
-        $( "#matrix-list li" ).each(function( index ) {
-            var op = new Array();
-            op['size'] = $( this ).attr("size");
-            op['operations'] = $( this ).attr("operations");
-            
-            matrixOperations.push(op);
-        });
-        
-        $("#form-step3").append("<input type='hidden' name='matrixSizesOperations' value='"+JSON.stringify(matrixOperations)+"'/>");
-        
-        //$("#form-step3").submit();
     }
     </script>
     
