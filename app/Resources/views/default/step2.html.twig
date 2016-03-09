@@ -26,8 +26,7 @@
                         <button type="button" 
                                 id="matrix-add" 
                                 class="btn btn-primary btn-lg btn-block">
-                            Add Matrix 
-                            (<span id="test-cases-left">{{testCases}}</span> left)
+                            <!-- Label will be put here with JS -->        
                         </button>
                     </div>
                 </div>                        
@@ -112,4 +111,6 @@
         $("#form-step2").submit();
     }
     </script>
+    
+    <script src="{{ asset('js/step2.js') }}"></script>
 {% endblock %}
