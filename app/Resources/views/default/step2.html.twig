@@ -73,35 +73,13 @@
         
         
         
-    $( "#matrix-add" ).on( "click", function( event ) {
-        // Get Matrix size value
-        var matrixSize = $("#matrix-size").val();
-        
-        addMatrix(matrixSize);
-        
-        // Get test cases left
-        var testCasesLeft = $("#test-cases-left").html();
-        
-        var testCasesRemain = testCasesLeft - 1;
-        
-        // Change test cases remaining or hide add button
-        if (testCasesRemain == 0) {
-            $('#matrix-add').hide();
-            $("#next-step").show();
-            $("#matrix-container").html("Done!");
-        } else {
-            $("#test-cases-left").html(testCasesRemain);
-        }
-    });
+    
     
     $( "#next-step" ).on( "click", function( event ) {
         submitMatrix();
     });
     
-    function addMatrix(size)
-    {
-        $("#matrix-list").append("<li class='list-group-item' size='"+size+"'>Matrix (1,1,1)...("+size+","+size+","+size+")</li>");
-    }
+    
     
     function submitMatrix()
     {
