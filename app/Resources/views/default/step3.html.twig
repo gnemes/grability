@@ -133,9 +133,11 @@
             var op = new Array();
             op['size'] = $( this ).attr("size");
             op['operations'] = $( this ).attr("operations");
-            alert(op['size']+'-'+op['operations']);
+            
             matrixOperations.push(op);
         });
+        
+        alert(matrixOperations);
         
         $("#form-step3").append("<input type='hidden' name='matrixSizesOperations' value='"+JSON.stringify(matrixOperations)+"'/>");
         
