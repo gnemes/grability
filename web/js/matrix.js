@@ -3,11 +3,12 @@ function Matrix(size, operations) {
     this.operations = operations; // Cantidad de operaciones sobre la matriz
 }
 
-function Container()
+function TestCases()
 {
-    this.matrix = new Array(); // Contenedor de matrices
+    this.quantity = 0; // Test cases quantity
+    this.matrices = new Array(); // Matrices del test case
 }
 
-Container.prototype.addMatrix = function(matrix) {
-    this.matrix.push(matrix);
+TestCases.prototype.addMatriz = function(matrix) {
+    this.matrices.push(matrix);
 };
