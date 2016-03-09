@@ -40,9 +40,10 @@ class DefaultController extends Controller
     {
         $session = $request->getSession();
         
-        // Get test cases quantity from request
-        $testCases = $request->request->get('testsqty');
-        
+        // Get test case object
+        $testCases = $request->request->get('testCase');
+echo $testCases;
+return true;
         // Set test cases quantity into session
         $session->set("testCases", $testCases);
         

@@ -12,3 +12,12 @@ function TestCases()
 TestCases.prototype.addMatriz = function(matrix) {
     this.matrices.push(matrix);
 };
+
+function submitTestCase(tc)
+{
+    var jsonTestCases = JSON.stringify(tc);
+
+    var input = "<input type='hidden' name='testCase' value=\""+jsonTestCases+"\"/>";
+
+    $("#form-step").append(input).submit();    
+}
