@@ -57,7 +57,7 @@
     </div>                        
 </div>
                             
-<form action="{{ path('step3') }}" method="post" id="form-step2">
+<form action="{{ path('step3') }}" method="post" id="form-step">
 </form>
 {% endblock %}
 
@@ -65,6 +65,14 @@
     {{ parent() }}
     
     <script type="text/javascript">
+        var tc = new TestCases();
+
+        $(function() {
+            tc.init("{{testCases}}");
+        });
+        
+        
+        
     $( "#matrix-add" ).on( "click", function( event ) {
         // Get Matrix size value
         var matrixSize = $("#matrix-size").val();

@@ -13,6 +13,16 @@ TestCases.prototype.addMatriz = function(matrix) {
     this.matrices.push(matrix);
 };
 
+TestCases.prototype.init = function(jsonTestCases) {
+    var tcTmp = JSON.parse(jsonTestCases);
+    this.quantity = tcTmp.quantity;
+    
+    tcTmp.matrices.each( function( elem ) {
+        var tmpMatrix = new Matrix(elem.size, elem.operations);
+        this.addMatrix(tmpMatrix);
+    });
+}
+
 function submitTestCase(tc)
 {
     var jsonTestCases = htmlspecialchars(JSON.stringify(tc));

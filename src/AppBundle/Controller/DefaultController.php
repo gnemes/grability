@@ -42,8 +42,7 @@ class DefaultController extends Controller
         
         // Get test case object
         $testCases = $request->request->get('testCase');
-echo $testCases;
-return true;
+
         // Set test cases quantity into session
         $session->set("testCases", $testCases);
         
