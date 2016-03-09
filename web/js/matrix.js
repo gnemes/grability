@@ -16,6 +16,7 @@ TestCases.prototype.addMatriz = function(matrix) {
 function submitTestCase(tc)
 {
     var jsonTestCases = JSON.stringify(tc);
+    jsonTestCases = jsonTestCases.replace(/(['"])/g, "\\$1");
 
     var input = "<input type='hidden' name='testCase' value=\""+jsonTestCases+"\"/>";
 
