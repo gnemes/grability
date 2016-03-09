@@ -57,7 +57,7 @@
     </div>                        
 </div>
                             
-<form action="{{ path('step4') }}" method="post" id="form-step3">
+<form action="{{ path('step4') }}" method="post" id="form-step">
 </form>
 {% endblock %}
 
@@ -65,6 +65,15 @@
     {{ parent() }}
     
     <script type="text/javascript">
+        $(function() {
+            var tc = new TestCases();
+            tc.init("{{testCases | raw}}");
+            
+            initStep3(tc);
+        });
+        
+        
+        
     var matrixSizes = jQuery.parseJSON('{{matrixSizes | raw}}');
     var currentSize = popElementFromMatrixSizes();
     var matrixOperations = new Array();
@@ -74,21 +83,6 @@
         return matrixSizes.pop();
     }
     
-    function changeMatrixLabel(newSize)
-    {
-        if (typeof newSize === 'undefined') {
-            $("#matrix-container").html("Done!");
-        } else {
-            $("#matrix-size-label").html("Operations for matrix ("+newSize+", "+newSize+", "+newSize+"): ");
-        }
-    }
-    
-    $(function() {
-        changeMatrixLabel(currentSize);
-    });
-    
-    $("#next-step").hide();    
-        
     $( "#matrix-add" ).on( "click", function( event ) {
         // Get Matrix size operations value
         var matrixSizeOperations = $("#matrix-size-operations").val();
@@ -141,4 +135,6 @@
         //$("#form-step3").submit();
     }
     </script>
+    
+    <script src="{{ asset('js/step3.js') }}"></script>
 {% endblock %}
