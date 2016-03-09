@@ -1,3 +1,4 @@
+/* global tc */
 var pending = tc.quantity;
 
 $(function() {
