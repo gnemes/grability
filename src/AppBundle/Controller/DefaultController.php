@@ -5,9 +5,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-
-
 
 class DefaultController extends Controller
 {
@@ -38,14 +35,9 @@ class DefaultController extends Controller
      */
     public function step2Action(Request $request)
     {
-        $session = $request->getSession();
-        
         // Get test case object
         $testCases = $request->request->get('testCase');
 
-        // Set test cases quantity into session
-        $session->set("testCases", $testCases);
-        
         $breadcum = array(
             "step1" => "completed",
             "step2" => "active",
@@ -69,20 +61,8 @@ class DefaultController extends Controller
      */
     public function step3Action(Request $request)
     {
-        $session = $request->getSession();
-        
         // Get test case object
         $testCases = $request->request->get('testCase');
-echo $testCases; return false;        
-        
-        // Get test cases quantity from request
-        $matrixSizes = $request->request->get('matrixSizes');
-        
-        // Set test cases quantity into session
-        $session->set("matrixSizes", $matrixSizes);
-        
-        // Get test cases quantity into session
-        $testCases = $session->get("testCases");
         
         $breadcum = array(
             "step1" => "completed",
@@ -97,8 +77,7 @@ echo $testCases; return false;
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,
-                'testCases' => $testCases,
-                'matrixSizes' => json_encode(array_reverse($matrixSizes)),
+                'testCases' => addslashes($testCases),
             ]
         );
     }
