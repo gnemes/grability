@@ -64,10 +64,11 @@
     {{ parent() }}
     
     <script type="text/javascript">
-        var tc = new TestCases();
-
         $(function() {
+            var tc = new TestCases();
             tc.init("{{testCases | raw}}");
+            
+            initStep2(tc);
         });
         
         

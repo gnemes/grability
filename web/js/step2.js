@@ -1,10 +1,14 @@
-/* global tc */
-var pending = tc.quantity;
+var pending = 0;
+var tc = null;
 
-$(function() {
+function initStep2(tcInit) {
+    tc = tcInit;
+    
+    pending = tc.quantity;
+    
     // Change label to button Add Matrix
     $("#matrix-add").html("Add Matrix ("+pending+" left)");
     
     // Hide next step button
     $("#next-step").hide();
-});
+};
