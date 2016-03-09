@@ -19,8 +19,7 @@ function submitTestCase(tc)
 
     var input = "<input type='hidden' name='testCase' value=\""+jsonTestCases+"\"/>";
 
-    $("#form-step").append(input);
-    //$("#form-step").submit();    
+    $("#form-step").append(input).submit();    
 }
 
 function htmlspecialchars(string, quote_style, charset, double_encode) {
