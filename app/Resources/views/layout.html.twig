@@ -44,16 +44,16 @@
             
             {% block content %}{% endblock %}
         </div>
-        
-        {% block javascripts %}
-        <!-- jQuery 1.12.1 -->
-        <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
-        
-        <!-- Bootstrap 3.3.* -->
-        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-        
-        <!-- JS classes -->
-        <script src="{{ asset('js/matrix.js') }}"></script>
-        {% endblock %}
     </body>
+    
+    {% block javascripts %}
+    <!-- jQuery 1.12.1 -->
+    <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
+
+    <!-- Bootstrap 3.3.* -->
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+
+    <!-- JS classes -->
+    <script src="{{ asset('js/matrix.js') }}"></script>
+    {% endblock %}
 </html>
