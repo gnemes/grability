@@ -17,7 +17,7 @@ function submitTestCase(tc)
 {
     var jsonTestCases = JSON.stringify(tc);
     jsonTestCases = jsonTestCases.replace(/(['"])/g, "\\$1");
-
+alert(jsonTestCases);
     var input = "<input type='hidden' name='testCase' value=\""+jsonTestCases+"\"/>";
 
     $("#form-step").append(input).submit();    
