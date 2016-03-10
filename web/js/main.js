@@ -30,6 +30,9 @@ dump(tcTmp.matrices);
 function dump(obj) {
     var out = '';
     for (var i in obj) {
+        if (typeof obj[i] === 'Object') {
+            dump(obj[i]);
+        }
         out += i + ": " + obj[i] + "\n";
     }
 
