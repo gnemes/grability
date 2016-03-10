@@ -3,7 +3,7 @@ var tc = null;
 var matrices = null;
 var currentMatrix = null;
 
-function initStep2(tcInit) {
+function initStep3(tcInit) {
     // Init test cases object
     tc = tcInit;
     
