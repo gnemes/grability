@@ -9,7 +9,7 @@ function TestCases()
     this.matrices = new Array(); // Matrices del test case
 }
 
-TestCases.prototype.addMatriz = function(matrix) {
+TestCases.prototype.addMatrix = function(matrix) {
     this.matrices.push(matrix);
 };
 
@@ -17,12 +17,9 @@ TestCases.prototype.init = function(jsonTestCases) {
     // jQuery.parseJSON(jsonTestCases)
     var tcTmp = Object.create(TestCases, jsonTestCases);
     
-    alert(tcTmp.quantity);
-    
     this.quantity = tcTmp.quantity;
     
     var self = this;
-    
     $.each(tcTmp.matrices, function( elem ) {
         var tmpMatrix = new Matrix(elem.size, elem.operations);
         self.addMatrix(tmpMatrix);
