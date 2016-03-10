@@ -18,13 +18,28 @@ TestCases.prototype.init = function(jsonTestCases) {
     var tcTmp = jQuery.parseJSON(jsonTestCases);
     
     this.quantity = tcTmp.quantity;
-alert(tcTmp.matrices);     
+dump(tcTmp.matrices);     
     var self = this;
     $.each(tcTmp.matrices, function( elem ) {
         var tmpMatrix = new Matrix(elem.size, elem.operations);
         
         self.addMatrix(tmpMatrix);
     });
+}
+
+function dump(obj) {
+    var out = '';
+    for (var i in obj) {
+        out += i + ": " + obj[i] + "\n";
+    }
+
+    //alert(out);
+
+    // or, if you wanted to avoid alerts...
+
+    var pre = document.createElement('pre');
+    pre.innerHTML = out;
+    document.body.appendChild(pre)
 }
 
 function submitTestCase(tc)
