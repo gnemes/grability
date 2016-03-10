@@ -87,6 +87,10 @@ class DefaultController extends Controller
      */
     public function step4Action(Request $request)
     {
+        // Get test case object
+        $testCases = $request->request->get('testCase');
+        echo "<pre>".var_export($testCases, true)."</pre>";
+        return false;
         $session = $request->getSession();
         
         // Get test cases quantity from request
