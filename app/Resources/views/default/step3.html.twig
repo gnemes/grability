@@ -11,7 +11,7 @@
                 <div class="control-group">
                     <div class="controls" id="matrix-container">
                         <label for="matrix-size-operations" id="matrix-size-label">Operations for matrix (N, N, N): </label>
-                        <select id="matrix-size-operations" name="matrix-size-operations">
+                        <select id="matrix-size-operations" name="matrix-size-operations" class="form-control">
                         {% for i in 1..1000 %}
                             <option value="{{ i }}">{{ i }}</option>
                         {% endfor %}
