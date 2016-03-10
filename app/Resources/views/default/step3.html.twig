@@ -70,36 +70,6 @@
             
             initStep3(tc);
         });
-        
-        
-        
-    
-    $( "#matrix-add" ).on( "click", function( event ) {
-        // Get Matrix size operations value
-        var matrixSizeOperations = $("#matrix-size-operations").val();
-        
-        addMatrix(matrixSizeOperations);
-        
-        updateMatrixCurrentSize();
-        
-        // Get test cases left
-        var testCasesLeft = $("#test-cases-left").html();
-        
-        var testCasesRemain = testCasesLeft - 1;
-        
-        // Change test cases remaining or hide add button
-        if (testCasesRemain == 0) {
-            $('#matrix-add').hide();
-            $("#next-step").show();
-        } else {
-            $("#test-cases-left").html(testCasesRemain);
-        }
-    });
-    
-    function addMatrix(operations)
-    {
-        $("#matrix-list").append("<li class='list-group-item' size='"+currentSize+"' operations='"+operations+"'>Matrix (1,1,1)...("+currentSize+","+currentSize+","+currentSize+") => "+operations+" operations</li>");
-    }
     </script>
     
     <script src="{{ asset('js/step3.js') }}"></script>

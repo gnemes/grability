@@ -50,7 +50,7 @@ function addMatrix(size)
     tc.addMatrix(mat);
     
     // Add matrix to results panel
-    var li = "<li class='list-group-item' size='"+size+"'>Matrix (1,1,1)...("+size+","+size+","+size+")</li>";
+    var li = "<li class='list-group-item'>Matrix (1,1,1)...("+size+","+size+","+size+")</li>";
     $("#matrix-list").append(li);
 }
 

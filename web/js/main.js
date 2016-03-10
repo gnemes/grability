@@ -13,6 +13,10 @@ TestCases.prototype.addMatrix = function(matrix) {
     this.matrices.push(matrix);
 };
 
+TestCases.prototype.removeMatrices = function() {
+    this.matrices = null;
+}
+
 TestCases.prototype.init = function(jsonTestCases) {
     // Parse init JSON string
     var tcTmp = jQuery.parseJSON(jsonTestCases);
