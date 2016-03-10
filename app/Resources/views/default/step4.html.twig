@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Step 4 - Operations</h3>
+            </div>
+            <div class="panel-body">
+                <div class="control-group">
+                    <div class="controls" id="matrix-container">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <div class="form-actions">
+                    <div>
+                        <button type="button" 
+                                id="matrix-add" 
+                                class="btn btn-primary btn-lg btn-block">
+                            <!-- Label will be put here with JS --> 
+                        </button>
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>
+                            
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Matrix and operations</h3>
+            </div>
+
+            <div class="panel-body">
+                
+                <ul class="list-group" id="matrix-list">
+                </ul>
+                
+            </div>
+            
+            <div class="panel-footer">
+                <div>
+                    <button type="button" id="next-step" class="btn btn-primary btn-lg btn-block">Next step</button>
+                </div>
+            </div>
+        </div>
+    </div>                        
+</div>
+                            
+<form action="{{ path('step4') }}" method="post" id="form-step">
+</form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript">
+        $(function() {
+            var tc = new TestCases();
+            tc.init("{{testCases | raw}}");
+            
+            // initStep3(tc);
+        });
+    </script>
+    
+    <script src="{{ asset('js/step3.js') }}"></script>
+{% endblock %}
