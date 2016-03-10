@@ -9,13 +9,13 @@ function initStep3(tcInit) {
     
     // Init matrices
     matrices = tc.matrices;
-    
+    dump(matrices);
     // Update current matrix
     currentMatrix = matrices.shift();
     
     // Update test cases quantity pending
     pending = tc.quantity;
-alert(currentMatrix.size);    
+
     // Update add matrix operations button
     updateAddMatrixOperationsButton(currentMatrix.size);
     
