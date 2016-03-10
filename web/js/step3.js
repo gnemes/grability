@@ -99,9 +99,11 @@ function addMatrixToTestCasesAndUpdateCurrent(operations)
     
     // Add matrix to test cases instance
     tc.addMatrix(currentMatrix);
+
+    alert(matrices.length);
     
     // Update current instance
-    currentMatrix = matrices.shift();    
+    currentMatrix = matrices.shift();
 }
 
 function updateAddMatrixOperationsLabel()
