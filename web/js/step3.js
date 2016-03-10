@@ -78,12 +78,26 @@ $("#next-step").on('click', function( event ) {
 
 ////////////////// UI HELPERS //////////////////
 
+/**
+ * Add matrix to results panel and to testCases instance
+ * 
+ * @param {int} operations
+ * 
+ * @returns {void}
+ */
 function addMatrix(operations)
 {
     addMatrixToResultsPanel(operations);
     addMatrixToTestCasesAndUpdateCurrent(operations);
 }
 
+/**
+ * Add matrix to results panel
+ * 
+ * @param {int} operations
+ * 
+ * @returns {void}
+ */
 function addMatrixToResultsPanel(operations)
 {
     // Add matrix to results panel
@@ -92,6 +106,13 @@ function addMatrixToResultsPanel(operations)
     $("#matrix-list").append(li);
 }
 
+/**
+ * Add matrix to testCases instance
+ * 
+ * @param {int} operations
+ * 
+ * @returns {voif}
+ */
 function addMatrixToTestCasesAndUpdateCurrent(operations)
 {
     
@@ -105,12 +126,22 @@ function addMatrixToTestCasesAndUpdateCurrent(operations)
     currentMatrix = matrices.shift();
 }
 
+/**
+ * Update matrix to set operations number label
+ * 
+ * @returns {void}
+ */
 function updateAddMatrixOperationsLabel()
 {
     var size = currentMatrix.size;
     $("#matrix-size-label").html("Operations for matrix ("+size+", "+size+", "+size+"): ");
 }
 
+/**
+ * Update add matrix button with matrix remain quantity
+ * 
+ * @returns {void}
+ */
 function updateAddMatrixButton()
 {
     // Change label to button Add Matrix
