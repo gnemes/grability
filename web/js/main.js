@@ -22,6 +22,7 @@ TestCases.prototype.init = function(jsonTestCases) {
     var self = this;
     $.each(tcTmp.matrices, function( elem ) {
         var tmpMatrix = new Matrix(elem.size, elem.operations);
+alert(tmpMatrix.size);         
         self.addMatrix(tmpMatrix);
     });
 }
