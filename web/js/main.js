@@ -22,17 +22,8 @@ TestCases.prototype.init = function(jsonTestCases) {
     
     // Add matrices to test case
     for (var i in tcTmp.matrices) {
-        alert(tcTmp.matrices[i].size);
-        dump(tcTmp.matrices[i]);
+        this.addMatrix(tcTmp.matrices[i].size, tcTmp.matrices[i].operations);
     }
-/*
-    var self = this;
-    $.each(tcTmp.matrices, function( elem ) {
-        var tmpMatrix = new Matrix(elem.size, elem.operations);
-        
-        self.addMatrix(tmpMatrix);
-    });
-*/    
 }
 
 function dump(obj) {
