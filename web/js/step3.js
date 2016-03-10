@@ -9,7 +9,7 @@ function initStep3(tcInit) {
     
     // Init matrices
     matrices = tc.matrices;
-    dump(matrices);
+    dump(tc);
     // Update current matrix
     currentMatrix = matrices.shift();
     
