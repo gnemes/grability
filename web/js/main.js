@@ -17,14 +17,22 @@ TestCases.prototype.init = function(jsonTestCases) {
     // Parse init JSON string
     var tcTmp = jQuery.parseJSON(jsonTestCases);
     
+    // Set test cases quantity
     this.quantity = tcTmp.quantity;
-alert(tcTmp.matrices.size);     
+    
+    // Add matrices to test case
+    for (var i in tcTmp.matrices) {
+        alert(tcTmp.matrices[i].size);
+        dump(tcTmp.matrices[i]);
+    }
+/*
     var self = this;
     $.each(tcTmp.matrices, function( elem ) {
         var tmpMatrix = new Matrix(elem.size, elem.operations);
         
         self.addMatrix(tmpMatrix);
     });
+*/    
 }
 
 function dump(obj) {
