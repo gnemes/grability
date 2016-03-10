@@ -89,36 +89,21 @@ class DefaultController extends Controller
     {
         // Get test case object
         $testCases = $request->request->get('testCase');
-        echo "<pre>".var_export($testCases, true)."</pre>";
-        return false;
-        $session = $request->getSession();
-        
-        // Get test cases quantity from request
-        $matrixSizesOperations = $request->request->get('matrixSizesOperations');
-        
-        // Set test cases quantity into session
-        $session->set("matrixSizesOperations", $matrixSizesOperations);
-        
-echo "Result:: ".var_export($matrixSizesOperations, true);        
-        
-        // Get test cases quantity into session
-        $testCases = $session->get("testCases");
         
         $breadcum = array(
             "step1" => "completed",
             "step2" => "completed",
-            "step3" => "active",
-            "step4" => "",
+            "step3" => "completed",
+            "step4" => "active",
             "step5" => "",
         );
         
         return $this->render(
-            'default/step3.html.twig',
+            'default/step4.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,
-                'testCases' => $testCases,
-                'matrixSizes' => json_encode(array_reverse($matrixSizes)),
+                'testCases' => addslashes($testCases),
             ]
         );
     }    
