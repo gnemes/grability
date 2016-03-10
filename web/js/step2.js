@@ -47,7 +47,7 @@ function addMatrix(size)
     var mat = new Matrix(size, 0);
     
     // Add to test cases matrices collection
-    tc.addMatriz(mat);
+    tc.addMatrix(mat);
     
     // Add matrix to results panel
     var li = "<li class='list-group-item' size='"+size+"'>Matrix (1,1,1)...("+size+","+size+","+size+")</li>";
