@@ -14,7 +14,8 @@ TestCases.prototype.addMatriz = function(matrix) {
 };
 
 TestCases.prototype.init = function(jsonTestCases) {
-    var tcTmp = Object.create(TestCases, jQuery.parseJSON(jsonTestCases));
+    // jQuery.parseJSON(jsonTestCases)
+    var tcTmp = Object.create(TestCases, jsonTestCases);
     
     alert(tcTmp.quantity);
     
