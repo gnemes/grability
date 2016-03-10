@@ -14,7 +14,7 @@ TestCases.prototype.addMatrix = function(matrix) {
 };
 
 TestCases.prototype.removeMatrices = function() {
-    this.matrices = null;
+    this.matrices = new Array();
 }
 
 TestCases.prototype.init = function(jsonTestCases) {

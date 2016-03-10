@@ -12,7 +12,7 @@ var tc = null;
  * 
  * @type Array of Matrix
  */
-var matrices = null;
+var matrices = new Array();
 
 /**
  * Current matrix
@@ -94,14 +94,13 @@ function addMatrixToResultsPanel(operations)
 
 function addMatrixToTestCasesAndUpdateCurrent(operations)
 {
+    
     // Add operations number to current matrix
     currentMatrix.operations = operations;
     
     // Add matrix to test cases instance
     tc.addMatrix(currentMatrix);
 
-    alert(matrices.length);
-    
     // Update current instance
     currentMatrix = matrices.shift();
 }
