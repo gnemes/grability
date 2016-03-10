@@ -15,7 +15,7 @@ function initStep3(tcInit) {
     
     // Update test cases quantity pending
     pending = tc.quantity;
-    
+alert(currentMatrix.size);    
     // Update add matrix operations button
     updateAddMatrixOperationsButton(currentMatrix.size);
     
