@@ -144,6 +144,8 @@ function updateAddMatrixOperationsLabel()
  */
 function updateAddMatrixButton()
 {
+    var pending = matrices.length+1;
+    
     // Change label to button Add Matrix
-    $("#matrix-add").html("Add Operations for Matrix ("+matrices.length+" left)");
+    $("#matrix-add").html("Add Operations for Matrix ("+pending+" left)");
 }
