@@ -44,7 +44,9 @@ function initStep4(tcInit) {
     // They will be readded one by one with its operations
     tc.removeMatrices();
     
-    
+    // Update labels
+    updateCurrentMatrixLabel();
+    updateAddMatrixButton();
     
     // Hide next step button
     $("#next-step").hide();
@@ -73,3 +75,26 @@ $("#next-step").on('click', function( event ) {
 });
 
 ////////////////// UI HELPERS //////////////////
+
+/**
+ * Updates matrix label with current matrix
+ * 
+ * @returns {void}
+ */
+function updateCurrentMatrixLabel()
+{
+    var size = currentMatrix.size;
+    var text = 'Enter operations for Matrix (1,1,1)...('+size+','+size+','+size+')';
+    $("#matrix-operations-label").html(text);
+}
+
+/**
+ * Update add matrix button with matrix remain quantity
+ * 
+ * @returns {void}
+ */
+function updateAddMatrixButton()
+{
+    // Change label to button Add Matrix
+    $("#matrix-add").html("Add Operations for Matrix ("+matrices.length+" left)");
+}
