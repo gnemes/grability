@@ -120,6 +120,8 @@ $( "#matrix-add" ).on( "click", function( event ) {
                     $("#matrix-container").html("Done!");
                     $('#matrix-add').hide();
                     $("#next-step").show();
+                    
+                    dump(tc.matrices);
                 } else {
                     // Update labels
                     updateCurrentMatrixLabel();
@@ -155,8 +157,10 @@ function updateCurrentMatrixLabel()
  */
 function updateAddMatrixButton()
 {
+    var pending = matrices.length + 1;
+    
     // Change label to button Add Matrix
-    $("#matrix-add").html("Add Operations for Matrix ("+matrices.length+" left)");
+    $("#matrix-add").html("Add Operations for Matrix ("+pending+" left)");
 }
 
 /**
