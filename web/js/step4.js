@@ -96,18 +96,14 @@ $( "#matrix-add" ).on( "click", function( event ) {
                 $("#message").show();
             } else {
                 $.each(data.data, function (elem) {
-                    var operation;
                     if (elem.type == "UPDATE") {
-                        operation = new UpdateOperation(elem.x, elem.y, elem.z, elem.value);
+                        currentMatrix.addOperation(new UpdateOperation(elem.x, elem.y, elem.z, elem.value));
                     } else if (elem.type == "QUERY") {
-                        operation = new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2);
+                        currentMatrix.addOperation(new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2));
                     }
-                    
-                    dump(operation);
-                    
-                    // Add operation to current matrix
-                    currentMatrix.addOperation(operation);
                 });
+                
+                dump(currentMatrix);
                 
                 // Add matrix to test case
                 tc.addMatrix(currentMatrix);
