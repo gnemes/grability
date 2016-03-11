@@ -65,7 +65,7 @@ class Matrix
                         // Query operation
                         break;
                     default:
-                        $result["errorCode"] = 1; 
+                        $result["errorCode"] = 2; 
                         $result["errorString"] = "Error in operation ".($i+1).": Unknown operation.";
                         break;
                 }
