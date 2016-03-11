@@ -166,4 +166,54 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
             array(1, 1, 0)
         );
     }
+    
+    public function testUpdateCommandsSuccess()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "UPDATE 1 1 1 10\n"
+                . "UPDATE 2 2 1 5\n"
+                . "UPDATE 3 2 1 2\n"
+                . "UPDATE 1 3 1 3\n";
+        
+        $data = array(
+            array(
+                "type" => "UPDATE",
+                "x" => 1,
+                "y" => 1,
+                "z" => 1,
+                "value" => 10
+            ),
+            array(
+                "type" => "UPDATE",
+                "x" => 2,
+                "y" => 2,
+                "z" => 1,
+                "value" => 5
+            ),
+            array(
+                "type" => "UPDATE",
+                "x" => 3,
+                "y" => 2,
+                "z" => 1,
+                "value" => 2
+            ),
+            array(
+                "type" => "UPDATE",
+                "x" => 1,
+                "y" => 3,
+                "z" => 1,
+                "value" => 3
+            ),
+        );
+        
+        $expected = array(
+            "errorCode" => 0, 
+            "errorString" => "success",
+            "data" => $data
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 3, 4));
+    }
 }

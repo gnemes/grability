@@ -61,9 +61,13 @@ class Matrix
                     case "UPDATE":
                         // Update operation
                         $update = $this->_parseUpdateCommand($explodedOp);
-                        if ($update["errorCode"] != 0) {
-                            $result["errorCode"] = $update["errorCode"]; 
-                            $result["errorString"] = $update["errorString"];
+                        $result["errorCode"] = $update["errorCode"]; 
+                        $result["errorString"] = $update["errorString"];
+                        
+                        if ($result["errorCode"] == 0) {
+                            array_push($result["data"], $update["data"]);
+                        } else {
+                            $result["data"] = array();
                         }
                         break;
                     case "QUERY":
@@ -77,8 +81,6 @@ class Matrix
             }
         }
         
-        error_log("In the service :: ".var_export($ops, true)."\n", 3, "/tmp/german.log");
-        
         return $result;
     }
     
@@ -87,6 +89,7 @@ class Matrix
         $result = array();
         $result["errorCode"] = 0;
         $result["errorString"] = 'success';
+        $result["data"] = array();
         
         // Remove the UPDATE from the command arguments
         $commandQty = count($command) - 1;
@@ -117,6 +120,9 @@ class Matrix
                 $result["errorCode"] = 5;
                 $result["errorString"] = 'Invalid arguments for UPDATE command. ';
                 $result["errorString"] .= 'Expected an integer value to set. The value '.$command[4].' is invalid.';
+            } else {
+                // Everything is ok!
+                $result["data"] = $update;
             }
         }
         
