@@ -270,7 +270,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
     
     public function queryInvalidPositionArgumentsProvider()
     {
-        array(
+        return array(
             array(4, 1, 1, 1, 1, 1, 3),
             array(1, 4, 1, 1, 1, 1, 3),
             array(1, 1, 4, 1, 1, 1, 3),
