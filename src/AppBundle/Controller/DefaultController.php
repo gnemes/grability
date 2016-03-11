@@ -118,12 +118,10 @@ class DefaultController extends Controller
         
         $matrix = $this->get("Matrix");
         
-        $matrix->parseOperations($operations);
+        $result = $matrix->parseOperations($operations);
 
         $response = new JsonResponse();
-        $response->setData(array(
-            'data' => 123
-        ));
+        $response->setData($result);
         
         return $response;
     }
