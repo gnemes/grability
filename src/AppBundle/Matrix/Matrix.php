@@ -72,6 +72,15 @@ class Matrix
                         break;
                     case "QUERY":
                         // Query operation
+                        $query = $this->_parseQueryCommand($explodedOp);
+                        $result["errorCode"] = $query["errorCode"]; 
+                        $result["errorString"] = $query["errorString"];
+                        
+                        if ($result["errorCode"] == 0) {
+                            array_push($result["data"], $query["data"]);
+                        } else {
+                            $result["data"] = array();
+                        }
                         break;
                     default:
                         $result["errorCode"] = 2; 
@@ -87,6 +96,65 @@ class Matrix
         return $result;
     }
     
+    /**
+     * Parse query command
+     * 
+     * @param array $command Command
+     * 
+     * @return array
+     */
+    private function _parseQueryCommand($command)
+    {
+        $result = array();
+        $result["errorCode"] = 0;
+        $result["errorString"] = 'success';
+        $result["data"] = array();
+        
+        // Remove the UPDATE from the command arguments
+        $commandQty = count($command) - 1;
+        if ($commandQty != 6) {
+            $result["errorCode"] = 6;
+            $result["errorString"] = 'Invalid arguments quantity for QUERY command. 6 expected but found '.$commandQty.' arguments';
+        } else {
+            $update = array();
+            $update["type"] = 'UPDATE';
+            $update["x"] = (int) $command[1];
+            $update["y"] = (int) $command[2];
+            $update["z"] = (int) $command[3];
+            $update["value"] = (int) $command[4];
+            
+            // Validations
+            if (
+                $update["x"] == 0 || 
+                $update["y"] == 0 || 
+                $update["z"] == 0 ||
+                $update["x"] > $this->size || 
+                $update["y"] > $this->size || 
+                $update["z"]  > $this->size     
+            ) {
+                $result["errorCode"] = 4;
+                $result["errorString"] = 'Invalid arguments for UPDATE command. ';
+                $result["errorString"] .= 'Expected a position in the matrix but ('.$command[1].', '.$command[2].', '.$command[3].') not is a valid position.';
+            } else if ($update["value"] == 0 && trim($command[4]) != "0") {
+                $result["errorCode"] = 5;
+                $result["errorString"] = 'Invalid arguments for UPDATE command. ';
+                $result["errorString"] .= 'Expected an integer value to set. The value '.$command[4].' is invalid.';
+            } else {
+                // Everything is ok!
+                $result["data"] = $update;
+            }
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Parse update command
+     * 
+     * @param array $command Command
+     * 
+     * @return array
+     */
     private function _parseUpdateCommand($command)
     {
         $result = array();

@@ -216,4 +216,36 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->parseOperations($commands, 3, 4));
     }
+    
+    public function testMoreQueryArgumentsQuantity()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "QUERY 1 1 1 2 2 2 2\n";
+        
+        $expected = array(
+            "errorCode" => 3, 
+            "errorString" => "Invalid arguments quantity for QUERY command. 6 expected but found 7 arguments",
+            "data" => array()
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 1));
+    }
+    
+    public function testLessQueryArgumentsQuantity()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "QUERY 1 1 1 2\n";
+        
+        $expected = array(
+            "errorCode" => 3, 
+            "errorString" => "Invalid arguments quantity for QUERY command. 6 expected but found 4 arguments",
+            "data" => array()
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 1));
+    }
 }
