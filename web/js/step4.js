@@ -96,6 +96,7 @@ $( "#matrix-add" ).on( "click", function( event ) {
                 $("#message").show();
             } else {
                 $.each(data.data, function (elem) {
+                     dump(elem);
                     if (elem.type == "UPDATE") {
                         currentMatrix.addOperation(new UpdateOperation(elem.x, elem.y, elem.z, elem.value));
                     } else if (elem.type == "QUERY") {
