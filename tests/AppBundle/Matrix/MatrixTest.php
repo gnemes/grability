@@ -314,45 +314,52 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-/*    
     public function testQueryCommandsSuccess()
     {
         // Matrix instance
         $matrix = new Matrix();
 
-        $commands = "QUERY 1 1 1 3 3 3 10\n"
-                . "UPDATE 2 2 1 5\n"
-                . "UPDATE 3 2 1 2\n"
-                . "UPDATE 1 3 1 3\n";
+        $commands = "QUERY 1 1 1 3 3 3\n"
+                . "QUERY 2 2 2 3 3 3\n"
+                . "QUERY 1 2 1 2 3 1\n"
+                . "QUERY 3 2 1 3 3 3\n";
         
         $data = array(
             array(
-                "type" => "UPDATE",
-                "x" => 1,
-                "y" => 1,
-                "z" => 1,
-                "value" => 10
+                "type" => "QUERY",
+                "x1" => 1,
+                "y1" => 1,
+                "z1" => 1,
+                "x2" => 3,
+                "y2" => 3,
+                "z2" => 3,
             ),
             array(
-                "type" => "UPDATE",
-                "x" => 2,
-                "y" => 2,
-                "z" => 1,
-                "value" => 5
+                "type" => "QUERY",
+                "x1" => 2,
+                "y1" => 2,
+                "z1" => 2,
+                "x2" => 3,
+                "y2" => 3,
+                "z2" => 3,
             ),
             array(
-                "type" => "UPDATE",
-                "x" => 3,
-                "y" => 2,
-                "z" => 1,
-                "value" => 2
+                "type" => "QUERY",
+                "x1" => 1,
+                "y1" => 2,
+                "z1" => 1,
+                "x2" => 2,
+                "y2" => 3,
+                "z2" => 1,
             ),
             array(
-                "type" => "UPDATE",
-                "x" => 1,
-                "y" => 3,
-                "z" => 1,
-                "value" => 3
+                "type" => "QUERY",
+                "x1" => 3,
+                "y1" => 2,
+                "z1" => 1,
+                "x2" => 3,
+                "y2" => 3,
+                "z2" => 3,
             ),
         );
         
@@ -364,6 +371,4 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->parseOperations($commands, 3, 4));
     }
- * 
- */
 }
