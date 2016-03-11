@@ -103,6 +103,8 @@ $( "#matrix-add" ).on( "click", function( event ) {
                         operation = new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2);
                     }
                     
+                    dump(operation);
+                    
                     // Add operation to current matrix
                     currentMatrix.addOperation(operation);
                 });
@@ -122,7 +124,7 @@ $( "#matrix-add" ).on( "click", function( event ) {
                     $('#matrix-add').hide();
                     $("#next-step").show();
                     
-                    dump(tc.matrices);
+                    //dump(tc.matrices);
                 } else {
                     // Update labels
                     updateCurrentMatrixLabel();
