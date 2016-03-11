@@ -63,11 +63,19 @@ function initStep4(tcInit, validateOperationsUrlInit) {
     
     // Hide next step button
     $("#next-step").hide();
+    
+    $("#processing").hide();
 };
 
 $( "#matrix-add" ).on( "click", function( event ) {
     // Hide alert div
     $("#message").hide();
+    
+    // Hide add button
+    $("#matrix-add").hide();
+    
+    // Show processing
+    $("#processing").show();
     
     $.post( 
         validateOperationsUrl, 
@@ -77,6 +85,12 @@ $( "#matrix-add" ).on( "click", function( event ) {
             operations: currentMatrix.operations,
         }, 
         function( data ) {
+            // Show add button
+            $("#matrix-add").show();
+
+            // Hide processing
+            $("#processing").hide();
+            
             if (data.errorCode != 0) {
                 $("#message").html(data.errorString);
                 $("#message").show();
