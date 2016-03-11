@@ -17,6 +17,6 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
                 
         $expected = "Expected 2 commands, but 3 commands found.";
         
-        $this->assertEquals(json_encode($expected), $matrix->parseOperations($commands, 2, 2));
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 2));
     }
 }
