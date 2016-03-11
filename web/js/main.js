@@ -1,6 +1,29 @@
+function UpdateOperation(x,y,z,val)
+{
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.val = val;
+}
+
+function QueryOperation(x1,y1,z1,x2,y2,z2)
+{
+    this.x1 = x1;
+    this.y1 = y1;
+    this.z1 = z1;
+    this.x2 = x2;
+    this.y2 = y2;
+    this.z2 = z2;
+}
+
 function Matrix(size, operations) {
     this.size = size; // Tamaño de la matriz
     this.operations = operations; // Cantidad de operaciones sobre la matriz
+    this.operationsCollection = new Array(); // Operations
+}
+
+Matrix.prototype.addOperation = function (operation) {
+    this.operationsCollection.push(operation);
 }
 
 function TestCases()

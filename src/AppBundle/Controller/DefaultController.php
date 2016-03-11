@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
@@ -106,5 +107,20 @@ class DefaultController extends Controller
                 'testCases' => addslashes($testCases),
             ]
         );
-    }    
+    }
+    
+    /**
+     * @Route("/validate/operations", name="validateOperations")
+     */
+    public function validateOperationsAction(Request $request)
+    {
+        $operations = $request->request->get('operations');
+        
+        error_log(var_export($operations, true)."\n", 3, "/tmp/german.log");
+
+        $response = new JsonResponse();
+        $response->setData(array(
+            'data' => 123
+        ));
+    }
 }

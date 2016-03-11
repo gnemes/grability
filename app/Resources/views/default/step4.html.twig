@@ -13,7 +13,9 @@
                         <h5 id="matrix-operations-label">
                             <!-- This will be filled with JS -->
                         </h5>
-                        <textarea id="matrix-operations" class="form-control"></textarea>
+                        <textarea id="matrix-operations" 
+                                  class="form-control"
+                                  placeholder="Paste your operations here"></textarea>
                     </div>
                 </div>
             </div>
@@ -66,7 +68,9 @@
             var tc = new TestCases();
             tc.init("{{testCases | raw}}");
             
-            initStep4(tc);
+            var validateOperationsUrl = "{{ path('validateOperations') }}";
+            
+            initStep4(tc, validateOperationsUrl);
         });
     </script>
     

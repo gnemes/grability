@@ -21,6 +21,13 @@ var matrices = new Array();
  */
 var currentMatrix = null;
 
+/**
+ * Validate operations URL
+ * 
+ * @type String
+ */
+var validateOperationsUrl = "";
+
 ////////////////// EVENTOS //////////////////
  
 /**
@@ -30,7 +37,10 @@ var currentMatrix = null;
  * 
  * @returns Void
  */ 
-function initStep4(tcInit) {
+function initStep4(tcInit, validateOperationsUrlInit) {
+    // Set validate operations URL
+    validateOperationsUrl = validateOperationsUrlInit;
+            
     // Init test cases object
     tc = tcInit;
     
@@ -53,6 +63,11 @@ function initStep4(tcInit) {
 };
 
 $( "#matrix-add" ).on( "click", function( event ) {
+    $.post( validateOperationsUrl, { operations: $("#matrix-operations").serialize() }, function( data ) {
+       dump(data);
+    }, "json");
+    
+    /*
     // Get Matrix size operations value
     var operations = $("#matrix-size-operations").val();
 
@@ -68,6 +83,7 @@ $( "#matrix-add" ).on( "click", function( event ) {
         updateAddMatrixOperationsLabel();
         updateAddMatrixButton();
     }
+    */
 });
 
 $("#next-step").on('click', function( event ) {
@@ -98,3 +114,4 @@ function updateAddMatrixButton()
     // Change label to button Add Matrix
     $("#matrix-add").html("Add Operations for Matrix ("+matrices.length+" left)");
 }
+
