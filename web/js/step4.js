@@ -78,7 +78,7 @@ $( "#matrix-add" ).on( "click", function( event ) {
         }, 
         function( data ) {
             if (data.errorCode != 0) {
-                $("#message").html(data.errorStr);
+                $("#message").html(data.errorString);
                 $("#message").show();
             }
         }, 
