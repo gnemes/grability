@@ -116,7 +116,9 @@ class DefaultController extends Controller
     {
         $operations = $request->request->get('operations');
         
-        error_log(var_export($operations, true)."\n", 3, "/tmp/german.log");
+        $matrix = $this->get("Matrix");
+        
+        $matrix->parseOperations($operations);
 
         $response = new JsonResponse();
         $response->setData(array(
