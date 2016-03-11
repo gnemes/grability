@@ -308,9 +308,9 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
     public function queryBreakConstraintPositionArgumentsProvider()
     {
         return array(
-            array(1, 1, 1, 3, 1, 1, 3),
-            array(1, 1, 1, 1, 3, 1, 3),
-            array(1, 1, 1, 1, 1, 3, 3),
+            array(3, 1, 1, 1, 1, 1, 3),
+            array(1, 3, 1, 1, 1, 1, 3),
+            array(1, 1, 3, 1, 1, 1, 3),
         );
     }
 
