@@ -125,8 +125,14 @@ class DefaultController extends Controller
             "step5" => "active",
         );
         
-        // Get results from matrix operations
-        echo "MATRIX <pre>".var_export(json_decode($testCases), true)."</pre>";
+        // JSON decode
+        $testCases = json_decode($testCases);
+        
+        // Matrices container
+        $matrices = array();
+        while (!is_null($matrix = array_shift($testCases->matrices))) {
+            echo "<pre>".var_export($matrix, true)."</pre>";
+        }
         
         return $this->render(
             'default/step4.html.twig',
