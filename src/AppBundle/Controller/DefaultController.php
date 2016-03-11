@@ -114,11 +114,13 @@ class DefaultController extends Controller
      */
     public function validateOperationsAction(Request $request)
     {
+        $commands = $request->request->get('commands');
+        $size = $request->request->get('size');
         $operations = $request->request->get('operations');
         
         $matrix = $this->get("Matrix");
         
-        $result = $matrix->parseOperations($operations);
+        $result = $matrix->parseOperations($commands, $size, $operations);
 
         $response = new JsonResponse();
         $response->setData($result);

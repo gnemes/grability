@@ -63,9 +63,17 @@ function initStep4(tcInit, validateOperationsUrlInit) {
 };
 
 $( "#matrix-add" ).on( "click", function( event ) {
-    $.post( validateOperationsUrl, { operations: $("#matrix-operations").val() }, function( data ) {
-       dump(data);
-    }, "json");
+    $.post( 
+        validateOperationsUrl, 
+        { 
+            commands: $("#matrix-operations").val(), 
+            size: currentMatrix.size,
+            operations: currentMatrix.operations,
+        }, 
+        function( data ) {
+            dump(data);
+        }, 
+    "json");
     
     /*
     // Get Matrix size operations value
