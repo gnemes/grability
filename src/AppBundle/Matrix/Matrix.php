@@ -10,7 +10,9 @@ class Matrix
         $result["status"] = "success";
         $result["data"] = array();
         
-        error_log("In the service :: ".var_export($operations, true)."\n", 3, "/tmp/german.log");
+        $ops = explode("\n", $operations);
+        
+        error_log("In the service :: ".var_export($ops, true)."\n", 3, "/tmp/german.log");
         
         return $result;
     }
