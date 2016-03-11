@@ -95,7 +95,6 @@ $( "#matrix-add" ).on( "click", function( event ) {
                 $("#message").html(data.errorString);
                 $("#message").show();
             } else {
-                dump(data);
                 $.each(data.data, function (elem) {
                     elem = elem.shift();
                     if (elem.type == "UPDATE") {
@@ -104,8 +103,6 @@ $( "#matrix-add" ).on( "click", function( event ) {
                         currentMatrix.addOperation(new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2));
                     }
                 });
-                
-                dump(currentMatrix);
                 
                 // Add matrix to test case
                 tc.addMatrix(currentMatrix);
@@ -122,7 +119,6 @@ $( "#matrix-add" ).on( "click", function( event ) {
                     $('#matrix-add').hide();
                     $("#next-step").show();
                     
-                    //dump(tc.matrices);
                 } else {
                     // Update labels
                     updateCurrentMatrixLabel();
