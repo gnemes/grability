@@ -225,7 +225,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         $commands = "QUERY 1 1 1 2 2 2 2\n";
         
         $expected = array(
-            "errorCode" => 3, 
+            "errorCode" => 6, 
             "errorString" => "Invalid arguments quantity for QUERY command. 6 expected but found 7 arguments",
             "data" => array()
         );
@@ -241,7 +241,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         $commands = "QUERY 1 1 1 2\n";
         
         $expected = array(
-            "errorCode" => 3, 
+            "errorCode" => 6, 
             "errorString" => "Invalid arguments quantity for QUERY command. 6 expected but found 4 arguments",
             "data" => array()
         );
