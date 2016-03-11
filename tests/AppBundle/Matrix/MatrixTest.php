@@ -261,7 +261,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $expected = array(
             "errorCode" => 7, 
-            "errorString" => "Invalid arguments for QUERY command. Expected a position in the matrix but ('.$x1.', '.$y1.', '.$z1.') or ('.$x2.', '.$y2.', '.$z2.') not is a valid position.",
+            "errorString" => "Invalid arguments for QUERY command. Expected a position in the matrix but (".$x1.", ".$y1.", ".$z1.") or (".$x2.", ".$y2.", ".$z2.") not is a valid position.",
             "data" => array()
         );
         
