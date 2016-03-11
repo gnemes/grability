@@ -248,4 +248,41 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 1));
     }
+    
+    /**
+     * @dataProvider queryInvalidPositionArgumentsProvider
+     */
+    public function testQueryInvalidPositionArguments($x1, $y1, $z1, $x2, $y2, $z2, $size)
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "QUERY ".$x1." ".$y1." ".$z1." ".$x2." ".$y2." ".$z2."\n";
+        
+        $expected = array(
+            "errorCode" => 7, 
+            "errorString" => "Invalid arguments for QUERY command. Expected a position in the matrix but ('.$x1.', '.$y1.', '.$z1.') or ('.$x2.', '.$y2.', '.$z2.') not is a valid position.",
+            "data" => array()
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, $size, 1));
+    }
+    
+    public function queryInvalidPositionArgumentsProvider()
+    {
+        array(
+            array(4, 1, 1, 1, 1, 1, 3),
+            array(1, 4, 1, 1, 1, 1, 3),
+            array(1, 1, 4, 1, 1, 1, 3),
+            array(1, 1, 1, 4, 1, 1, 3),
+            array(1, 1, 1, 1, 4, 1, 3),
+            array(1, 1, 1, 1, 1, 4, 3),
+            array('A', 1, 1, 1, 1, 1, 3),
+            array(1, 'A', 1, 1, 1, 1, 3),
+            array(1, 1, 'A', 1, 1, 1, 3),
+            array(1, 1, 1, 'A', 1, 1, 3),
+            array(1, 1, 1, 1, 'A', 1, 3),
+            array(1, 1, 1, 1, 1, 'A', 3),
+        );
+    }
 }

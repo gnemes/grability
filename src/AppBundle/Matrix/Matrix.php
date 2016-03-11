@@ -116,32 +116,40 @@ class Matrix
             $result["errorCode"] = 6;
             $result["errorString"] = 'Invalid arguments quantity for QUERY command. 6 expected but found '.$commandQty.' arguments';
         } else {
-            $update = array();
-            $update["type"] = 'UPDATE';
-            $update["x"] = (int) $command[1];
-            $update["y"] = (int) $command[2];
-            $update["z"] = (int) $command[3];
-            $update["value"] = (int) $command[4];
+            $query = array();
+            $query["type"] = 'QUERY';
+            $query["x1"] = (int) $command[1];
+            $query["y1"] = (int) $command[2];
+            $query["z1"] = (int) $command[3];
+            $query["x2"] = (int) $command[4];
+            $query["y2"] = (int) $command[5];
+            $query["z2"] = (int) $command[6];
             
             // Validations
             if (
-                $update["x"] == 0 || 
-                $update["y"] == 0 || 
-                $update["z"] == 0 ||
-                $update["x"] > $this->size || 
-                $update["y"] > $this->size || 
-                $update["z"]  > $this->size     
+                $query["x1"] == 0 || 
+                $query["y1"] == 0 || 
+                $query["z1"] == 0 ||
+                $query["x1"] > $this->size || 
+                $query["y1"] > $this->size || 
+                $query["z1"] > $this->size ||
+                $query["x2"] == 0 || 
+                $query["y2"] == 0 || 
+                $query["z2"] == 0 ||
+                $query["x2"] > $this->size || 
+                $query["y2"] > $this->size || 
+                $query["z2"] > $this->size    
             ) {
-                $result["errorCode"] = 4;
-                $result["errorString"] = 'Invalid arguments for UPDATE command. ';
-                $result["errorString"] .= 'Expected a position in the matrix but ('.$command[1].', '.$command[2].', '.$command[3].') not is a valid position.';
-            } else if ($update["value"] == 0 && trim($command[4]) != "0") {
+                $result["errorCode"] = 7;
+                $result["errorString"] = 'Invalid arguments for QUERY command. ';
+                $result["errorString"] .= 'Expected a position in the matrix but ('.$command[1].', '.$command[2].', '.$command[3].') or ('.$command[4].', '.$command[5].', '.$command[6].') not is a valid position.';
+            } else if ($query["value"] == 0 && trim($command[4]) != "0") {
                 $result["errorCode"] = 5;
                 $result["errorString"] = 'Invalid arguments for UPDATE command. ';
                 $result["errorString"] .= 'Expected an integer value to set. The value '.$command[4].' is invalid.';
             } else {
                 // Everything is ok!
-                $result["data"] = $update;
+                $result["data"] = $query;
             }
         }
         
