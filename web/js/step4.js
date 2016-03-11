@@ -66,6 +66,9 @@ function initStep4(tcInit, validateOperationsUrlInit) {
 };
 
 $( "#matrix-add" ).on( "click", function( event ) {
+    // Hide alert div
+    $("#message").hide();
+    
     $.post( 
         validateOperationsUrl, 
         { 
@@ -76,6 +79,7 @@ $( "#matrix-add" ).on( "click", function( event ) {
         function( data ) {
             if (data.errorCode != 0) {
                 $("#message").html(data.errorStr);
+                $("#message").show();
             }
         }, 
     "json");
