@@ -63,7 +63,7 @@ function initStep4(tcInit, validateOperationsUrlInit) {
 };
 
 $( "#matrix-add" ).on( "click", function( event ) {
-    $.post( validateOperationsUrl, { operations: $("#matrix-operations").serialize() }, function( data ) {
+    $.post( validateOperationsUrl, { operations: $("#matrix-operations").val() }, function( data ) {
        dump(data);
     }, "json");
     

@@ -122,5 +122,7 @@ class DefaultController extends Controller
         $response->setData(array(
             'data' => 123
         ));
+        
+        return $response;
     }
 }
