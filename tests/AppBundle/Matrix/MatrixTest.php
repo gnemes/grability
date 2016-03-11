@@ -298,7 +298,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $expected = array(
             "errorCode" => 8, 
-            "errorString" => "Invalid arguments for QUERY command. The constraints are: x1 <= x2, y1 <= y2, z1 <= z2, but (".$x1.", ".$y1.", ".$z1.") and (".$x2." ,".$y2.", ".$z2.") break this rule.",
+            "errorString" => "Invalid arguments for QUERY command. The constraints are: x1 <= x2, y1 <= y2, z1 <= z2, but (".$x1.", ".$y1.", ".$z1.") and (".$x2.", ".$y2.", ".$z2.") break this rule.",
             "data" => array()
         );
         
