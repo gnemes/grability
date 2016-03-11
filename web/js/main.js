@@ -1,5 +1,6 @@
 function UpdateOperation(x,y,z,val)
 {
+    this.type = "UPDATE";
     this.x = x;
     this.y = y;
     this.z = z;
@@ -8,6 +9,7 @@ function UpdateOperation(x,y,z,val)
 
 function QueryOperation(x1,y1,z1,x2,y2,z2)
 {
+    this.type = "QUERY";
     this.x1 = x1;
     this.y1 = y1;
     this.z1 = z1;
