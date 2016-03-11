@@ -80,27 +80,40 @@ $( "#matrix-add" ).on( "click", function( event ) {
             if (data.errorCode != 0) {
                 $("#message").html(data.errorString);
                 $("#message").show();
+            } else {
+                $.each(data.data, function (elem) {
+                    if (elem.type == "UPDATE") {
+                        var operation = new UpdateOperation(elem.x, elem.y, elem.z, elem.value);
+                    } else if (elem.type == "QUERY") {
+                        var operation = new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2);
+                    }
+                    
+                    // Add operation to current matrix
+                    currentMatrix.addOperation(operation);
+                });
+                
+                // Add matrix to test case
+                tc.addMatrix(currentMatrix);
+                
+                // Add matrix to results panel
+                addMatrixToResultsPanel();
+                
+                // Get next matrix
+                currentMatrix = matrices.shift();
+                
+                // Change test cases remaining or hide add button
+                if (typeof currentMatrix === 'undefined') {
+                    $("#matrix-container").html("Done!");
+                    $('#matrix-add').hide();
+                    $("#next-step").show();
+                } else {
+                    // Update labels
+                    updateCurrentMatrixLabel();
+                    updateAddMatrixButton();
+                }
             }
         }, 
     "json");
-    
-    /*
-    // Get Matrix size operations value
-    var operations = $("#matrix-size-operations").val();
-
-    // Add matrix to test cases and to results panel
-    addMatrix(operations);
-
-    // Change test cases remaining or hide add button
-    if (typeof currentMatrix === 'undefined') {
-        $("#matrix-container").html("Done!");
-        $('#matrix-add').hide();
-        $("#next-step").show();
-    } else {
-        updateAddMatrixOperationsLabel();
-        updateAddMatrixButton();
-    }
-    */
 });
 
 $("#next-step").on('click', function( event ) {
@@ -132,3 +145,19 @@ function updateAddMatrixButton()
     $("#matrix-add").html("Add Operations for Matrix ("+matrices.length+" left)");
 }
 
+/**
+ * Add matrix to results panel
+ * 
+ * @param {int} operations
+ * 
+ * @returns {void}
+ */
+function addMatrixToResultsPanel()
+{
+    // Add matrix to results panel
+    var size = currentMatrix.size;
+    var operations = currentMatrix.operations;
+    
+    var li = "<li class='list-group-item'>Matrix (1,1,1)...("+size+","+size+","+size+") => "+operations+" operations</li>"; 
+    $("#matrix-list").append(li);
+}
