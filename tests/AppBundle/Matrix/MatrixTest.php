@@ -107,7 +107,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $expected = array(
             "errorCode" => 4, 
-            "errorString" => "Invalid arguments for UPDATE command. Expected a position in the matrix but (a, 1, c) not is a valid position.",
+            "errorString" => "Invalid arguments for UPDATE command. Expected a position in the matrix but (A, 1, C) not is a valid position.",
             "data" => array()
         );
         
