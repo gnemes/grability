@@ -371,4 +371,59 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->parseOperations($commands, 3, 4));
     }
+    
+    public function testMixedCommandsSuccess()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "UPDATE 1 1 1 10\n"
+                . "QUERY 2 2 2 3 3 3\n"
+                . "UPDATE 3 2 1 2\n"
+                . "QUERY 3 2 1 3 3 3\n";
+        
+        $data = array(
+            array(
+                "type" => "UPDATE",
+                "x" => 1,
+                "y" => 1,
+                "z" => 1,
+                "value" => 10
+            ),
+            array(
+                "type" => "QUERY",
+                "x1" => 2,
+                "y1" => 2,
+                "z1" => 2,
+                "x2" => 3,
+                "y2" => 3,
+                "z2" => 3,
+            ),
+            array(
+                "type" => "UPDATE",
+                "x" => 3,
+                "y" => 2,
+                "z" => 1,
+                "value" => 2
+            ),
+            array(
+                "type" => "QUERY",
+                "x1" => 3,
+                "y1" => 2,
+                "z1" => 1,
+                "x2" => 3,
+                "y2" => 3,
+                "z2" => 3,
+            ),
+        );
+        
+        $expected = array(
+            "errorCode" => 0, 
+            "errorString" => "success",
+            "data" => $data
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 3, 4));
+    }
+    
 }
