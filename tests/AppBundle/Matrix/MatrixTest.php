@@ -59,4 +59,22 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 3));
     }
+    
+    public function testMoreUpdateArgumentsQuantity()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "UPDATE 1 1 1 4 5\n"
+                . "UPDATE 2 1 2 5\n"
+                . "QUERY 1 1 1 2 2 2\n";
+        
+        $expected = array(
+            "errorCode" => 3, 
+            "errorString" => "Invalid arguments quantity for UPDATE command. 4 expected but found 5 arguments",
+            "data" => array()
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 3));
+    }
 }

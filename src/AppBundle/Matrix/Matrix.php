@@ -60,6 +60,11 @@ class Matrix
                 switch ($explodedOp[0]) {
                     case "UPDATE":
                         // Update operation
+                        $update = $this->_parseUpdateCommand($explodedOp);
+                        if ($update["errorCode"] != 0) {
+                            $result["errorCode"] = $update["errorCode"]; 
+                            $result["errorString"] = $update["errorString"];
+                        }
                         break;
                     case "QUERY":
                         // Query operation
@@ -73,6 +78,22 @@ class Matrix
         }
         
         error_log("In the service :: ".var_export($ops, true)."\n", 3, "/tmp/german.log");
+        
+        return $result;
+    }
+    
+    private function _parseUpdateCommand($command)
+    {
+        $result = array();
+        $result["errorCode"] = 0;
+        $result["errorString"] = 'success';
+        
+        // Remove the UPDATE from the command arguments
+        $commandQty = count($command) - 1;
+        if ($commandQty != 4) {
+            $result["errorCode"] = 3;
+            $result["errorString"] = 'Invalid arguments quantity for UPDATE command. 4 expected but found '.$commandQty.' arguments';
+        }
         
         return $result;
     }
