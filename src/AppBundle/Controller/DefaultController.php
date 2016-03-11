@@ -110,6 +110,35 @@ class DefaultController extends Controller
     }
     
     /**
+     * @Route("/step5", name="step5")
+     */
+    public function step5Action(Request $request)
+    {
+        // Get test case object
+        $testCases = $request->request->get('testCase');
+        
+        $breadcum = array(
+            "step1" => "completed",
+            "step2" => "completed",
+            "step3" => "completed",
+            "step4" => "completed",
+            "step5" => "active",
+        );
+        
+        // Get results from matrix operations
+        echo "MATRIX <pre>".var_export($testCases, true)."</pre>";
+        
+        return $this->render(
+            'default/step4.html.twig',
+            [
+                'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+                'breadcum' => $breadcum,
+                'testCases' => addslashes($testCases),
+            ]
+        );
+    }
+    
+    /**
      * @Route("/validate/operations", name="validateOperations")
      */
     public function validateOperationsAction(Request $request)
@@ -124,8 +153,6 @@ class DefaultController extends Controller
 
         $response = new JsonResponse();
         $response->setData($result);
-        
-        error_log("RESULT :: ".var_export($result,true)."\n",3,"/tmp/german.log");
         
         return $response;
     }
