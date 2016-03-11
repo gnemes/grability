@@ -159,7 +159,11 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         return array(
             array(4, 1, 1),
             array(1, 4, 1),
-            array(1, 1, 4)
+            array(1, 1, 4),
+            array(0, 0, 0),
+            array(0, 1, 1),
+            array(1, 0, 1),
+            array(1, 1, 0)
         );
     }
 }
