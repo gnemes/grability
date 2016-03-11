@@ -125,7 +125,7 @@ class DefaultController extends Controller
         $response = new JsonResponse();
         $response->setData($result);
         
-        echo "RESULT :: ".var_export($result,true)."</br>";
+        error_log("RESULT :: ".var_export($result,true)."\n",3,"/tmp/german.log");
         
         return $response;
     }
