@@ -96,10 +96,11 @@ $( "#matrix-add" ).on( "click", function( event ) {
                 $("#message").show();
             } else {
                 $.each(data.data, function (elem) {
+                    var operation;
                     if (elem.type == "UPDATE") {
-                        var operation = new UpdateOperation(elem.x, elem.y, elem.z, elem.value);
+                        operation = new UpdateOperation(elem.x, elem.y, elem.z, elem.value);
                     } else if (elem.type == "QUERY") {
-                        var operation = new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2);
+                        operation = new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2);
                     }
                     
                     // Add operation to current matrix
