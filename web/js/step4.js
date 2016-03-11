@@ -74,7 +74,9 @@ $( "#matrix-add" ).on( "click", function( event ) {
             operations: currentMatrix.operations,
         }, 
         function( data ) {
-            alert(data.errorCode);
+            if (data.errorCode != 0) {
+                $("#message").html(data.errorStr);
+            }
         }, 
     "json");
     
