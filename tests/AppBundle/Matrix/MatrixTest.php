@@ -151,7 +151,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
             "data" => array()
         );
         
-        $this->assertEquals($expected, $matrix->parseOperations($commands, 1, $size));
+        $this->assertEquals($expected, $matrix->parseOperations($commands, $size, 1));
     }
     
     public function updateInvalidPositionOutOfRangeProvider()
