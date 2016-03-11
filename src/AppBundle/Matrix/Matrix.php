@@ -80,7 +80,7 @@ class Matrix
                 }
             }
         }
-        
+        error_log(var_export($result, true)."\n", 3, "/tmp/german.log");        
         return $result;
     }
     
