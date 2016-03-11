@@ -57,6 +57,6 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
             "data" => array()
         );
         
-        $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 4));
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 3));
     }
 }
