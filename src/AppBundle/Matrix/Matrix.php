@@ -101,7 +101,15 @@ class Matrix
             $update["z"] = (int) $command[3];
             $update["value"] = (int) $command[4];
             
-            if ($update["x"] == 0 || $update["y"] == 0  || $update["z"] == 0 ) {
+            // Validations
+            if (
+                $update["x"] == 0 || 
+                $update["y"] == 0 || 
+                $update["z"] == 0 ||
+                $update["x"] > $this->size || 
+                $update["y"] > $this->size || 
+                $update["z"]  > $this->size     
+            ) {
                 $result["errorCode"] = 4;
                 $result["errorString"] = 'Invalid arguments for UPDATE command. ';
                 $result["errorString"] .= 'Expected a position in the matrix but ('.$command[1].', '.$command[2].', '.$command[3].') not is a valid position.';

@@ -131,4 +131,35 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 3));
     }
+    
+    /**
+     * @dataProvider updateInvalidPositionOutOfRangeProvider
+     */
+    public function testUpdateInvalidPositionOutOfRange($x, $y, $z)
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        // Matrix size
+        $size = 3;
+        
+        $commands = "UPDATE ".$x." ".$y." ".$z." 10\n";
+        
+        $expected = array(
+            "errorCode" => 4, 
+            "errorString" => "Invalid arguments for UPDATE command. Expected a position in the matrix but (".$x.", ".$y.", ".$z.") not is a valid position.",
+            "data" => array()
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 1, $size));
+    }
+    
+    public function updateInvalidPositionOutOfRangeProvider()
+    {
+        return array(
+            array(4, 1, 1),
+            array(1, 4, 1),
+            array(1, 1, 4)
+        );
+    }
 }
