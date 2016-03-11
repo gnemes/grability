@@ -95,14 +95,15 @@ $( "#matrix-add" ).on( "click", function( event ) {
                 $("#message").html(data.errorString);
                 $("#message").show();
             } else {
-                $.each(data.data, function (elem) {
-                    elem = elem.shift();
+                // Add matrices to test case
+                for (var i in data.data) {
+                    var elem = data.data[i];
                     if (elem.type == "UPDATE") {
                         currentMatrix.addOperation(new UpdateOperation(elem.x, elem.y, elem.z, elem.value));
                     } else if (elem.type == "QUERY") {
                         currentMatrix.addOperation(new QueryOperation(elem.x1, elem.y1, elem.z1, elem.x2, elem.y2, elem.z2));
                     }
-                });
+                }
                 
                 // Add matrix to test case
                 tc.addMatrix(currentMatrix);
