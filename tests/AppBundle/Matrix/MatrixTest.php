@@ -285,4 +285,85 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
             array(1, 1, 1, 1, 1, 'A', 3),
         );
     }
+    
+    /**
+     * @dataProvider queryBreakConstraintPositionArgumentsProvider
+     */
+    public function testQueryBreakConstraintPositionArguments($x1, $y1, $z1, $x2, $y2, $z2, $size)
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "QUERY ".$x1." ".$y1." ".$z1." ".$x2." ".$y2." ".$z2."\n";
+        
+        $expected = array(
+            "errorCode" => 8, 
+            "errorString" => "Invalid arguments for QUERY command. The constraints are: x1 <= x2, y1 <= y2, z1 <= z2, but (".$x1.", ".$y1.", ".$z1.") and (".$x2." ,".$y2.", ".$z2.") break this rule.",
+            "data" => array()
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, $size, 1));
+    }
+    
+    public function queryBreakConstraintPositionArgumentsProvider()
+    {
+        return array(
+            array(1, 1, 1, 4, 1, 1, 3),
+            array(1, 1, 1, 1, 4, 1, 3),
+            array(1, 1, 1, 1, 1, 4, 3),
+        );
+    }
+
+/*    
+    public function testQueryCommandsSuccess()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "QUERY 1 1 1 3 3 3 10\n"
+                . "UPDATE 2 2 1 5\n"
+                . "UPDATE 3 2 1 2\n"
+                . "UPDATE 1 3 1 3\n";
+        
+        $data = array(
+            array(
+                "type" => "UPDATE",
+                "x" => 1,
+                "y" => 1,
+                "z" => 1,
+                "value" => 10
+            ),
+            array(
+                "type" => "UPDATE",
+                "x" => 2,
+                "y" => 2,
+                "z" => 1,
+                "value" => 5
+            ),
+            array(
+                "type" => "UPDATE",
+                "x" => 3,
+                "y" => 2,
+                "z" => 1,
+                "value" => 2
+            ),
+            array(
+                "type" => "UPDATE",
+                "x" => 1,
+                "y" => 3,
+                "z" => 1,
+                "value" => 3
+            ),
+        );
+        
+        $expected = array(
+            "errorCode" => 0, 
+            "errorString" => "success",
+            "data" => $data
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 3, 4));
+    }
+ * 
+ */
 }

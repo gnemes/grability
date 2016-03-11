@@ -143,10 +143,14 @@ class Matrix
                 $result["errorCode"] = 7;
                 $result["errorString"] = 'Invalid arguments for QUERY command. ';
                 $result["errorString"] .= 'Expected a position in the matrix but ('.$command[1].', '.$command[2].', '.$command[3].') or ('.$command[4].', '.$command[5].', '.$command[6].') not is a valid position.';
-            } else if ($query["value"] == 0 && trim($command[4]) != "0") {
-                $result["errorCode"] = 5;
-                $result["errorString"] = 'Invalid arguments for UPDATE command. ';
-                $result["errorString"] .= 'Expected an integer value to set. The value '.$command[4].' is invalid.';
+            } else if (
+                $query["x1"] > $query["x2"] || 
+                $query["y1"] > $query["y2"] || 
+                $query["z1"] > $query["z2"]  
+            ) { 
+                $result["errorCode"] = 8;
+                $result["errorString"] = 'Invalid arguments for QUERY command. ';
+                $result["errorString"] .= 'The constraints are: x1 <= x2, y1 <= y2, z1 <= z2, but ('.$command[1].', '.$command[2].', '.$command[3].') and ('.$command[4].', '.$command[5].', '.$command[6].') break this rule.';
             } else {
                 // Everything is ok!
                 $result["data"] = $query;
