@@ -95,4 +95,22 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 3));
     }
+    
+    public function testUpdateInvalidPosition()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+
+        $commands = "UPDATE a 1 c 10\n"
+                . "UPDATE 2 1 2 5\n"
+                . "QUERY 1 1 1 2 2 2\n";
+        
+        $expected = array(
+            "errorCode" => 4, 
+            "errorString" => "Invalid arguments for UPDATE command. Expected a position in the matrix but (a, 1, c) not is a valid position.",
+            "data" => array()
+        );
+        
+        $this->assertEquals($expected, $matrix->parseOperations($commands, 2, 3));
+    }
 }

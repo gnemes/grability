@@ -93,6 +93,17 @@ class Matrix
         if ($commandQty != 4) {
             $result["errorCode"] = 3;
             $result["errorString"] = 'Invalid arguments quantity for UPDATE command. 4 expected but found '.$commandQty.' arguments';
+        } else {
+            $update = array();
+            $update["x"] = (int) $command[1];
+            $update["y"] = (int) $command[2];
+            $update["z"] = (int) $command[3];
+            
+            if (!is_int($update["x"]) || !is_int($update["y"]) || !is_int($update["z"])) {
+                $result["errorCode"] = 4;
+                $result["errorString"] = 'Invalid arguments for UPDATE command. ';
+                $result["errorString"] .= 'Expected a position in the matrix but ('.$update["x"].', '.$update["y"].', '.$update["z"].') not is a valid position.';
+            }
         }
         
         return $result;
