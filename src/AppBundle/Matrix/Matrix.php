@@ -76,6 +76,9 @@ class Matrix
                     default:
                         $result["errorCode"] = 2; 
                         $result["errorString"] = "Error in operation ".($i+1).": Unknown operation.";
+                        if ($result["errorCode"] != 0) {
+                            $result["data"] = array();
+                        }
                         break;
                 }
             }
