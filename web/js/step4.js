@@ -58,6 +58,9 @@ function initStep4(tcInit, validateOperationsUrlInit) {
     updateCurrentMatrixLabel();
     updateAddMatrixButton();
     
+    // Hide alert div
+    $("#message").hide();
+    
     // Hide next step button
     $("#next-step").hide();
 };
@@ -71,7 +74,7 @@ $( "#matrix-add" ).on( "click", function( event ) {
             operations: currentMatrix.operations,
         }, 
         function( data ) {
-            dump(data);
+            alert(data.errorCode);
         }, 
     "json");
     
