@@ -95,9 +95,9 @@ class Matrix
             $result["errorString"] = 'Invalid arguments quantity for UPDATE command. 4 expected but found '.$commandQty.' arguments';
         } else {
             $update = array();
-            $update["x"] = (int) $command[1];
-            $update["y"] = (int) $command[2];
-            $update["z"] = (int) $command[3];
+            $update["x"] = $command[1];
+            $update["y"] = $command[2];
+            $update["z"] = $command[3];
             
             if (!is_int($update["x"]) || !is_int($update["y"]) || !is_int($update["z"])) {
                 $result["errorCode"] = 4;
