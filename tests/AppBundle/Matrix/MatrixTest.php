@@ -688,4 +688,28 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(4, $matrix->query(1,1,1,1,2,2));
         $this->assertEquals(7, $matrix->query(1,1,1,2,2,2));
     }
+    
+    public function testExample1()
+    {
+        /*
+        2
+        4 5
+        UPDATE 2 2 2 4
+        QUERY 1 1 1 3 3 3
+        UPDATE 1 1 1 23
+        QUERY 2 2 2 4 4 4
+        QUERY 1 1 1 3 3 3
+         */
+        
+        // Matrix instance
+        $matrix = new Matrix();
+        
+        $matrix->setSize(4);
+        
+        $this->assertEquals(4, $matrix->update(2, 2, 2, 4));
+        $this->assertEquals(4, $matrix->query(1,1,1,3,3,3));
+        $this->assertEquals(23, $matrix->update(1, 1, 1, 23));
+        $this->assertEquals(4, $matrix->query(2,2,2,4,4,4));
+        $this->assertEquals(27, $matrix->query(1,1,1,3,3,3));
+    }
 }
