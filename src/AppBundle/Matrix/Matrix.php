@@ -5,6 +5,13 @@ namespace AppBundle\Matrix;
 class Matrix
 {
     /**
+     * Actual matrix
+     *
+     * @var Matrix 
+     */
+    protected $matrix = array();
+    
+    /**
      * Matrix size
      *
      * @var integer
@@ -24,6 +31,90 @@ class Matrix
      * @var array
      */
     protected $commands = array();
+    
+    /**
+     * Output history
+     *
+     * @var array
+     */
+    protected $outputHistory = array();
+    
+    /**
+     * Set matrix size
+     * 
+     * @param integer $size Matrix size
+     * 
+     * @return void
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+    }
+    
+    /**
+     * The index calculation its done by the next formula:
+     * 
+     * (x-1) . n^2 + (y-1) . n^1 + (z-1) . n^0
+     * 
+     * Being n the size of the N x N matrix
+     * 
+     * @param integer $x X position
+     * @param integer $y Y position
+     * @param integer $z Z position
+     * 
+     * @return integer
+     */
+    private function _getIndex($x, $y, $z)
+    {
+        if (($x > $this->size) || ($y > $this->size) || ($z > $this->size)) {
+            $index = false;
+        } else {
+            $index = ($x-1) * pow($this->size, 2);
+            $index += ($y-1) * $this->size;
+            $index += ($z-1);
+        }
+        
+        return $index;
+    }
+    
+    /**
+     * Get output history
+     * 
+     * @return array
+     */
+    public function getOutputHistory()
+    {
+        return $this->outputHistory;
+    }
+    
+    /**
+     * In this test, because we want to query for elements
+     * between positions, it's so much easy vectorizing the matrix.
+     * 
+     * See: https://en.wikipedia.org/wiki/Vectorization_(mathematics)
+     * 
+     * @param integer $x     X position
+     * @param integer $y     Y position
+     * @param integer $z     Z position
+     * @param integer $value Position value
+     * 
+     * @return integer
+     */
+    public function updatePosition($x, $y, $z, $value)
+    {
+        $index = $this->_getIndex($x, $y, $z);
+        
+        if ($index !== false) {
+            $this->matrix[$index] = $value;
+
+            array_push($this->outputHistory, "UPDATE ".$x." ".$y." ".$z." ".$value);
+            array_push($this->outputHistory, $value);
+        } else {
+            $value = false;
+        }
+        
+        return $value;
+    }
     
     /**
      * Parse operations and validate them

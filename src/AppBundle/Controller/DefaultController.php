@@ -126,13 +126,17 @@ class DefaultController extends Controller
         );
         
         // JSON decode
-        $testCases = json_decode($testCases);
+        $testCasesDecoded = json_decode($testCases);
         
         // Matrices container
         $matrices = array();
-        while (!is_null($matrix = array_shift($testCases->matrices))) {
-            echo "<pre>".var_export($matrix, true)."</pre>";
+        while (!is_null($matrixData = array_shift($testCasesDecoded->matrices))) {
+            // Create matrix
+            $matrixService = $this->get("Matrix");
+            
         }
+        
+        $testCases = json_encode($testCasesDecoded);
         
         return $this->render(
             'default/step4.html.twig',

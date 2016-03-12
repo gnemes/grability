@@ -426,4 +426,34 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $matrix->parseOperations($commands, 3, 4));
     }
     
+    public function testEmptyOutput()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+        
+        $this->assertEquals(array(), $matrix->getOutputHistory());
+    }
+    
+    public function testUpdateOnlyOutput()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+        
+        $matrix->setSize(3);
+        
+        $this->assertEquals(4, $matrix->updatePosition(1, 1, 1, 4));
+        $this->assertEquals(3, $matrix->updatePosition(2, 2, 2, 3));
+        $this->assertEquals(5, $matrix->updatePosition(1, 2, 1, 5));
+        
+        $expected = array(
+            0 => "UPDATE 1 1 1 4",
+            1 => 4,
+            2 => "UPDATE 2 2 2 3",
+            3 => 3,
+            4 => "UPDATE 1 2 1 5",
+            5 => 5,
+        );
+        
+        $this->assertEquals($expected, $matrix->getOutputHistory());   
+    }
 }
