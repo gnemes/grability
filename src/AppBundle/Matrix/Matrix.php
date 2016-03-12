@@ -71,7 +71,11 @@ class Matrix
     {
         $this->size = $size;
         
+        // Empty matrix
         $this->_initMatrix();
+        
+        // Clear history
+        $this->outputHistory = array();
     }
     
     /**

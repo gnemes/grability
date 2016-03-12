@@ -128,11 +128,12 @@ class DefaultController extends Controller
         // JSON decode
         $testCasesDecoded = json_decode($testCases);
         
+        $matrixService = $this->get("Matrix");
+        
         // Matrices container
         $matrices = array();
         while (!is_null($matrixData = array_shift($testCasesDecoded->matrices))) {
-            // Create matrix
-            $matrixService = $this->get("Matrix");
+            error_log("MATRIZ :: ".var_export($matrixData, true)."\n",3,"/tmp/german.log");
             
         }
         
