@@ -584,6 +584,19 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $matrix->getVectorizedMatrix());
     }
     
+    public function testQueryOperationInvalidPosition()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+        
+        $matrix->setSize(3);
+        
+        $this->assertEquals(false, $matrix->query(1,1,1,3,3,4));
+        $this->assertEquals(false, $matrix->query(4,1,1,3,3,3));
+        $this->assertEquals(false, $matrix->query(1,0,1,3,3,4));
+        $this->assertEquals(false, $matrix->query(0,0,0,3,3,4));
+    }
+    
     public function testBasicUpdateAndQuery()
     {
         // Matrix instance
