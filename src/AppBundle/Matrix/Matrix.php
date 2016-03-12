@@ -123,7 +123,7 @@ class Matrix
      * 
      * @return integer
      */
-    public function updatePosition($x, $y, $z, $value)
+    public function update($x, $y, $z, $value)
     {
         $index = $this->_getIndex($x, $y, $z);
         
@@ -137,6 +137,37 @@ class Matrix
         }
         
         return $value;
+    }
+    
+    /**
+     * Query the sum of index from (x1,y1,z1) to (x2,y2,z2)
+     * 
+     * @param integer $x1 X1 position
+     * @param integer $y1 Y1 position
+     * @param integer $z1 Z1 position
+     * @param integer $x2 X2 position
+     * @param integer $y2 Y2 position
+     * @param integer $z2 Z2 position
+     * 
+     * @return mixed
+     */
+    public function query($x1, $y1, $z1, $x2, $y2, $z2)
+    {
+        $startIndex = $this->_getIndex($x1, $y1, $z1);
+        $endIndex = $this->_getIndex($x2, $y2, $z2);
+        
+        if (($startIndex === false) || ($endIndex === false)) {
+            // Invalid positions
+            return false;
+        } else if ($startIndex > $endIndex) {
+            // Start greater than end
+            return false;
+        } else {
+            $query = array_slice ($this->matrix, $startIndex, ($endIndex - $startIndex), true);
+            $sum = array_sum($query);
+            
+            return $sum;
+        }
     }
     
     /**
