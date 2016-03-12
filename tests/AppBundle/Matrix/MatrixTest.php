@@ -597,6 +597,16 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $matrix->query(0,0,0,3,3,4));
     }
     
+    public function testQueryOperationStartGreaterThanEnd()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+        
+        $matrix->setSize(3);
+        
+        $this->assertEquals(false, $matrix->query(3,3,3,1,1,1));
+    }
+    
     public function testBasicUpdateAndQuery()
     {
         // Matrix instance
