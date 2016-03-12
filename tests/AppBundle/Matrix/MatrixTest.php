@@ -456,4 +456,14 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($expected, $matrix->getOutputHistory());   
     }
+    
+    public function testUpdateOperationInInvalidPosition()
+    {
+        // Matrix instance
+        $matrix = new Matrix();
+        
+        $matrix->setSize(3);
+        
+        $this->assertEquals(false, $matrix->updatePosition(1, 1, 4, 4));
+    }
 }
