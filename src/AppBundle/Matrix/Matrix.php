@@ -40,6 +40,27 @@ class Matrix
     protected $outputHistory = array();
     
     /**
+     * Init matrix filling the vector to 0 in all the positions
+     * 
+     * @return void
+     */
+    private function _initMatrix()
+    {
+        $positions = ($this->size * $this->size * $this->size) - 1;
+        $this->matrix = array_fill(0, $positions, 0);
+    }
+    
+    /**
+     * Returns the vectorized matrix
+     * 
+     * @return array
+     */
+    public function getVectorizedMatrix()
+    {
+        return $this->matrix;
+    }
+    
+    /**
      * Set matrix size
      * 
      * @param integer $size Matrix size
@@ -49,6 +70,8 @@ class Matrix
     public function setSize($size)
     {
         $this->size = $size;
+        
+        $this->_initMatrix();
     }
     
     /**
