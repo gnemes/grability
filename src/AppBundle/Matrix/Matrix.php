@@ -163,7 +163,9 @@ class Matrix
             // Start greater than end
             return false;
         } else {
-            $query = array_slice ($this->matrix, $startIndex, ($endIndex - $startIndex), true);
+            // + 1 to contemplate the inclusion of the last position
+            $positions = ($endIndex - $startIndex + 1);
+            $query = array_slice ($this->matrix, $startIndex, $positions, true);
             $sum = array_sum($query);
             
             return $sum;
