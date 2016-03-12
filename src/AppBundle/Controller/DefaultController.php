@@ -133,7 +133,8 @@ class DefaultController extends Controller
         // Matrices container
         $matrices = array();
         while (!is_null($matrixData = array_shift($testCasesDecoded->matrices))) {
-            error_log("MATRIZ :: ".var_export($matrixData, true)."\n",3,"/tmp/german.log");
+            error_log("OPERATIONS :: ".var_export($matrixData->operationsCollection, true)."\n",3,"/tmp/german.log");
+            //error_log("MATRIZ :: ".var_export($matrixData, true)."\n",3,"/tmp/german.log");
             
         }
         
