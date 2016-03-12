@@ -131,21 +131,48 @@ class DefaultController extends Controller
         $matrixService = $this->get("Matrix");
         
         // Matrices container
-        $matrices = array();
+        $results = array();
         while (!is_null($matrixData = array_shift($testCasesDecoded->matrices))) {
-            error_log("OPERATIONS :: ".var_export($matrixData->operationsCollection, true)."\n",3,"/tmp/german.log");
-            //error_log("MATRIZ :: ".var_export($matrixData, true)."\n",3,"/tmp/german.log");
+            $matrix = array();
+            $matrix["size"] = $matrixData->size;
+            $matrix["operations"] = $matrixData->operations;
             
+            $matrixService->setSize($matrix["size"]);
+            if (count($matrixData->operationsCollection) > 0) {
+                foreach ($matrixData->operationsCollection as $operation) {
+                    if ($operation->type == 'UPDATE') {
+                        $matrixService->update(
+                            $operation->x, 
+                            $operation->y, 
+                            $operation->z, 
+                            $operation->value
+                        );
+                    } else {
+                        $matrixService->query(
+                            $operation->x1, 
+                            $operation->y1, 
+                            $operation->z1,
+                            $operation->x2, 
+                            $operation->y2, 
+                            $operation->z2
+                        );
+                    }
+                }
+            }
+            
+            $matrix["results"] = $matrixService->getOutputHistory();
+            
+            array_push($results, $matrix);
         }
-        
-        $testCases = json_encode($testCasesDecoded);
+            
+            error_log("RESULTS :: ".var_export($results, true)."\n",3,"/tmp/german.log");
         
         return $this->render(
             'default/step4.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,
-                'testCases' => addslashes($testCases),
+                'testCases' => addslashes($results),
             ]
         );
     }
