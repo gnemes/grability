@@ -46,7 +46,7 @@ class Matrix
      */
     private function _initMatrix()
     {
-        $positions = ($this->size * $this->size * $this->size) - 1;
+        $positions = ($this->size * $this->size * $this->size);
         $this->matrix = array_fill(0, $positions, 0);
     }
     
