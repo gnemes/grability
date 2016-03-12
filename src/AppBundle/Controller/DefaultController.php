@@ -166,7 +166,6 @@ class DefaultController extends Controller
         }
             
             error_log("RESULTS :: ".var_export($results, true)."\n",3,"/tmp/german.log");
-            error_log("MATRIX :: ".var_export($matrixService->getVectorizedMatrix(), true)."\n",3,"/tmp/german.log");
         
         return $this->render(
             'default/step4.html.twig',
