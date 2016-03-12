@@ -692,7 +692,6 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
     public function testExample1()
     {
         /*
-        2
         4 5
         UPDATE 2 2 2 4
         QUERY 1 1 1 3 3 3
@@ -711,5 +710,26 @@ class MatrixTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(23, $matrix->update(1, 1, 1, 23));
         $this->assertEquals(4, $matrix->query(2,2,2,4,4,4));
         $this->assertEquals(27, $matrix->query(1,1,1,3,3,3));
+    }
+    
+    public function testExample2()
+    {
+        /*
+         2 4
+        UPDATE 2 2 2 1
+        QUERY 1 1 1 1 1 1
+        QUERY 1 1 1 2 2 2
+        QUERY 2 2 2 2 2 2 
+         */
+        
+        // Matrix instance
+        $matrix = new Matrix();
+        
+        $matrix->setSize(2);
+        
+        $this->assertEquals(1, $matrix->update(2, 2, 2, 1));
+        $this->assertEquals(0, $matrix->query(1,1,1,1,1,1));
+        $this->assertEquals(1, $matrix->query(1,1,1,2,2,2));
+        $this->assertEquals(1, $matrix->query(2,2,2,2,2,2));
     }
 }
