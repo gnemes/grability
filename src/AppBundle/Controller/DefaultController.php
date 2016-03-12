@@ -145,7 +145,7 @@ class DefaultController extends Controller
                             $operation->x, 
                             $operation->y, 
                             $operation->z, 
-                            $operation->value
+                            $operation->val
                         );
                     } else {
                         $matrixService->query(
