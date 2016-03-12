@@ -159,7 +159,7 @@ class Matrix
     {
         $startIndex = $this->_getIndex($x1, $y1, $z1);
         $endIndex = $this->_getIndex($x2, $y2, $z2);
-error_log("QUERY :: ".$x1.",". $y1.",".$z1.",". $x2.",". $y2.",". $z2.",".$startIndex.",".$endIndex."\n",3,"/tmp/german.log");        
+
         if (($startIndex === false) || ($endIndex === false)) {
             // Invalid positions
             return false;
@@ -171,6 +171,9 @@ error_log("QUERY :: ".$x1.",". $y1.",".$z1.",". $x2.",". $y2.",". $z2.",".$start
             $positions = ($endIndex - $startIndex + 1);
             $query = array_slice ($this->matrix, $startIndex, $positions, true);
             $sum = array_sum($query);
+            
+            array_push($this->outputHistory, "QUERY ".$x1." ".$y1." ".$z1." ".$x2." ".$y2." ".$z2." ");
+            array_push($this->outputHistory, $sum);
             
             return $sum;
         }
