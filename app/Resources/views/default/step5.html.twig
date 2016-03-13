@@ -12,26 +12,12 @@
             <div class="panel-body">
                 <div class="control-group">
                     <div class="controls">
-                        <label for="testsqty">Tests cases quantity: </label>
-                        <select id="testsqty" name="testsqty" class="form-control">
-                        {% for i in 1..50 %}
-                            <option value="{{ i }}">{{ i }}</option>
-                        {% endfor %}
-                        </select>
+                        <h5>Tests cases quantity: </h5>
+                        <span>{{ testCases.quantity }}</span><br/>
+                        <h5>Matrices quantity: </h5>
+                        <span>{{ results|length }}</span><br/>
                     </div>
                 </div>
-            </div>
-
-            <div class="panel-footer">
-                <div class="form-actions">
-                    <div>
-                        <button type="button" 
-                                class="btn btn-primary btn-lg btn-block"
-                                id="next-step">
-                            Next step
-                        </button>
-                    </div>
-                </div>                        
             </div>
         </div>
     </div>

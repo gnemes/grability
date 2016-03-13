@@ -164,7 +164,7 @@ class DefaultController extends Controller
             
             array_push($results, $matrix);
         }
-            error_log("TC :: ".var_export($testCasesDecoded, true)."\n",3,"/tmp/german.log");
+        
         return $this->render(
             'default/step5.html.twig',
             [
