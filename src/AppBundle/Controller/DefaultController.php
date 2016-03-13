@@ -165,15 +165,13 @@ class DefaultController extends Controller
             array_push($results, $matrix);
         }
             
-            error_log("RESULTS :: ".var_export($results, true)."\n",3,"/tmp/german.log");
-        $results = json_encode($results);    
         return $this->render(
             'default/step4.html.twig',
             [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
                 'breadcum' => $breadcum,
                 'testCases' => addslashes($testCases),
-                'results' => addslashes($results),
+                'results' => $results,
             ]
         );
     }
